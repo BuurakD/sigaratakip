@@ -10,20 +10,14 @@
 <title>Sayaç</title>
 <style>
 :root{
-  --kagit:#E8EDE3;
-  --satir:#FCFDFA;
-  --cizgi:#B6C4AE;
-  --ince:#D3DCCD;
-  --murekkep:#151A13;
-  --soluk:#495443;
-  --damga:#9E1F18;
-  --onay:#22593E;
+  --kagit:#E8EDE3; --satir:#FCFDFA; --cizgi:#B6C4AE; --ince:#D3DCCD;
+  --murekkep:#151A13; --soluk:#495443; --damga:#9E1F18; --onay:#22593E;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
   background:var(--kagit);
-  background-image:repeating-linear-gradient(to bottom, transparent 0 31px, rgba(21,26,19,.045) 31px 32px);
+  background-image:repeating-linear-gradient(to bottom,transparent 0 31px,rgba(21,26,19,.045) 31px 32px);
   color:var(--murekkep);
   font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   padding-bottom:calc(78px + env(safe-area-inset-bottom));
@@ -39,42 +33,65 @@ h2{font-size:19px;margin:30px 0 12px}
 .ust{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--murekkep);padding-bottom:10px}
 .ust span{font-size:14px;color:var(--soluk);font-variant-numeric:tabular-nums}
 
-/* sayı bloğu */
-.sayac{padding:30px 0 22px;text-align:center;border-bottom:1px solid var(--cizgi)}
-.rakam{font-family:Georgia,serif;font-size:112px;line-height:.84;font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.sayac{padding:26px 0 20px;text-align:center;border-bottom:1px solid var(--cizgi)}
+.rakam{font-family:Georgia,serif;font-size:108px;line-height:.84;font-variant-numeric:tabular-nums;letter-spacing:-.04em}
 .rakam.asti{color:var(--damga)}
 .rakam.sifir{color:var(--onay)}
-.altbilgi{margin-top:18px;font-size:15px;color:var(--soluk);line-height:1.7}
+.kronometre{font-family:Georgia,serif;font-size:26px;font-variant-numeric:tabular-nums;margin-top:16px}
+.kronometre.iyi{color:var(--onay)}
+.kron-alt{font-size:14px;color:var(--soluk);margin-top:4px}
+.mini-seri{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:34px;margin-top:18px}
+.mini-seri i{width:9px;background:var(--cizgi);border-radius:1px;min-height:2px;display:block}
+.mini-seri i.dolu{background:var(--murekkep)}
+.mini-seri i.son{background:var(--damga)}
+.altbilgi{margin-top:16px;font-size:15px;color:var(--soluk);line-height:1.7}
 .altbilgi b{color:var(--murekkep);font-variant-numeric:tabular-nums;font-weight:600}
 
-/* butonlar */
 .eylem{display:flex;gap:10px;margin:18px 0 4px}
 button{font:inherit;border:none;border-radius:2px;cursor:pointer}
-.kaydet{flex:2;background:var(--damga);color:#fff;font-size:19px;font-weight:600;padding:19px 0;letter-spacing:.01em}
-.kaydet:active{background:#8C1C16}
+.kaydet{flex:2;background:var(--damga);color:#fff;font-size:19px;font-weight:600;padding:19px 0}
+.kaydet:active{background:#7F1712}
 .bekle{flex:1;background:transparent;color:var(--murekkep);border:1.5px solid var(--murekkep);font-size:15px;font-weight:500;padding:19px 0}
 .bekle:active{background:var(--murekkep);color:var(--kagit)}
-.bekle[disabled]{opacity:.45}
+.bekle[disabled],.gonder[disabled]{opacity:.45}
 
-/* ledger satırları */
 .defter{margin-top:6px;border-top:1px solid var(--cizgi);border-bottom:1px solid var(--cizgi)}
-.satir{display:flex;align-items:center;gap:14px;padding:14px 14px;border-bottom:1px solid var(--ince);background:var(--satir)}
+.satir{display:flex;align-items:center;gap:14px;padding:14px;border-bottom:1px solid var(--ince);background:var(--satir)}
 .satir:nth-child(even){background:transparent}
 .satir:last-child{border-bottom:none}
 .satir b{font-variant-numeric:tabular-nums;font-size:17px}
 .saat{font-variant-numeric:tabular-nums;font-weight:600;width:54px;flex:none}
 .tetik{flex:1;color:var(--soluk);font-size:16px}
+.tetik small{display:block;font-size:13px;opacity:.85}
 .sil{background:none;color:var(--damga);font-size:15px;padding:8px 6px;text-decoration:underline}
 .bos{padding:20px 14px;color:var(--soluk);font-size:16px;line-height:1.55}
+.mini{display:block;height:10px;background:var(--murekkep);border-radius:1px;min-width:4px}
+.oran{font-variant-numeric:tabular-nums;color:var(--soluk);width:52px;text-align:right;flex:none}
+.kasa-vurgu{background:var(--murekkep)!important;color:var(--kagit)}
+.kasa-vurgu .tetik{color:var(--kagit)}
 
-/* koç kutusu */
+.uyari-saat{background:var(--damga);color:#fff;padding:14px 16px;font-size:15px;line-height:1.5;margin-top:16px;border-radius:2px}
+.uyari-saat[hidden]{display:none}
+.uyari-saat b{font-variant-numeric:tabular-nums}
+.hatirlat{border:1.5px solid var(--murekkep);padding:12px 16px;margin-top:16px;border-radius:2px}
+.hatirlat[hidden]{display:none}
+.hatirlat p{margin:0 0 6px;font-size:15px;line-height:1.5}
+.hatirlat p:last-child{margin:0}
+.hatirlat b{font-variant-numeric:tabular-nums}
+.seri{border:1.5px solid var(--onay);padding:14px 16px;margin-top:18px;border-radius:2px}
+.seri[hidden]{display:none}
+.seri-ust{display:flex;justify-content:space-between;align-items:baseline;font-size:15px;color:var(--soluk)}
+.seri-ust b{font-family:Georgia,serif;font-size:24px;color:var(--onay);font-variant-numeric:tabular-nums}
+.cubuk{height:8px;background:var(--ince);margin-top:10px;border-radius:4px;overflow:hidden}
+.cubuk i{display:block;height:100%;background:var(--onay)}
+.cubuk.koyu i{background:var(--murekkep)}
+
 .koc{border-left:4px solid var(--damga);padding:16px 18px;background:var(--satir);margin-top:14px}
 .koc p{margin:0 0 11px;font-size:16px;line-height:1.55}
 .koc p:last-child{margin:0}
 .koc .odak{font-weight:600;color:var(--murekkep)}
 .koc b{font-variant-numeric:tabular-nums}
 
-/* grafik */
 .bar{display:flex;align-items:flex-end;gap:8px;height:150px;margin:14px 0 8px}
 .sut{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
 .dolgu{width:100%;background:var(--murekkep);min-height:4px;border-radius:2px 2px 0 0}
@@ -85,57 +102,51 @@ button{font:inherit;border:none;border-radius:2px;cursor:pointer}
 .olcu{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;font-size:15px;color:var(--soluk);border-top:1px solid var(--cizgi);padding-top:14px}
 .olcu b{color:var(--murekkep);font-variant-numeric:tabular-nums;font-weight:600}
 
-/* form */
+.harita{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;gap:3px;overflow-x:auto;padding:4px 0 10px}
+.harita i{width:11px;height:11px;border-radius:2px;background:var(--ince);display:block}
+.harita i.s1{background:#B9C7B2}
+.harita i.s2{background:#7E9375}
+.harita i.s3{background:#4A5F43}
+.harita i.s4{background:var(--murekkep)}
+.harita i.sifir{background:var(--onay);opacity:.55}
+.lejant{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--soluk)}
+.lejant i{width:11px;height:11px;border-radius:2px;display:block}
+
 label{display:block;font-size:16px;color:var(--murekkep);margin:18px 0 7px}
-input,select,textarea{
-  width:100%;font:inherit;font-size:17px;padding:13px 13px;border:1.5px solid var(--cizgi);
-  background:var(--satir);border-radius:2px;color:var(--murekkep);
-}
-input:focus,select,textarea:focus{outline:2px solid var(--murekkep);outline-offset:-1px}
+input,select,textarea{width:100%;font:inherit;font-size:17px;padding:13px;border:1.5px solid var(--cizgi);background:var(--satir);border-radius:2px;color:var(--murekkep)}
 .gonder{width:100%;background:var(--murekkep);color:var(--kagit);padding:16px;font-size:16px;font-weight:600;margin-top:22px}
-.hata{color:var(--damga);font-size:14px;margin-top:10px}
+.ikinci{background:transparent;color:var(--murekkep);border:1.5px solid var(--murekkep);margin-top:12px}
+.hata{color:var(--damga);font-size:15px;margin-top:10px}
 
-/* seçim çipleri */
-.ort{position:fixed;inset:0;background:rgba(27,32,25,.55);display:flex;align-items:flex-end;justify-content:center;z-index:20}
+.ort{position:fixed;inset:0;background:rgba(21,26,19,.55);display:flex;align-items:flex-end;justify-content:center;z-index:20}
 .ort[hidden]{display:none}
-.kart{background:var(--kagit);width:100%;max-width:520px;padding:22px 18px calc(24px + env(safe-area-inset-bottom));border-radius:10px 10px 0 0;max-height:88vh;overflow-y:auto}
-.cipler{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.mini{display:block;height:10px;background:var(--murekkep);border-radius:1px;min-width:4px}
-.uyari-saat{background:var(--damga);color:#fff;padding:14px 16px;font-size:15px;line-height:1.5;margin-top:16px;border-radius:2px}
-.uyari-saat[hidden]{display:none}
-.uyari-saat b{font-variant-numeric:tabular-nums}
-.mini-seri{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:34px;margin-top:20px}
-.mini-seri i{width:9px;background:var(--cizgi);border-radius:1px;min-height:2px;display:block}
-.mini-seri i.dolu{background:var(--murekkep)}
-.mini-seri i.son{background:var(--damga)}
-.kasa-vurgu{background:var(--murekkep)!important;color:var(--kagit)}
-.kasa-vurgu .tetik{color:var(--kagit)}
-.hatirlat{border:1.5px solid var(--murekkep);padding:12px 16px;margin-top:16px;border-radius:2px}
-.hatirlat[hidden]{display:none}
-.hatirlat p{margin:0 0 6px;font-size:15px;line-height:1.5}
-.hatirlat p:last-child{margin:0}
-.hatirlat b{font-variant-numeric:tabular-nums}
-.oran{font-variant-numeric:tabular-nums;color:var(--soluk);width:52px;text-align:right;flex:none}
-.seri{border:1.5px solid var(--onay);padding:14px 16px;margin-top:18px;border-radius:2px}
-.seri[hidden]{display:none}
-.seri-ust{display:flex;justify-content:space-between;align-items:baseline;font-size:15px;color:var(--soluk)}
-.seri-ust b{font-family:Georgia,serif;font-size:24px;color:var(--onay);font-variant-numeric:tabular-nums}
-.cubuk{height:8px;background:var(--ince);margin-top:10px;border-radius:4px;overflow:hidden}
-.cubuk i{display:block;height:100%;background:var(--onay)}
+.kart{background:var(--kagit);width:100%;max-width:520px;padding:22px 18px calc(24px + env(safe-area-inset-bottom));border-radius:10px 10px 0 0;max-height:90vh;overflow-y:auto}
+.kart h1{margin-bottom:4px}
+.grup{margin-top:16px}
+.grup>span{font-size:14px;color:var(--soluk);display:block;margin-bottom:8px}
+.cipler{display:flex;flex-wrap:wrap;gap:8px}
+.cip{background:var(--satir);border:1.5px solid var(--cizgi);padding:11px 14px;font-size:16px;border-radius:2px;color:var(--murekkep)}
 .cip.secili{background:var(--murekkep);color:var(--kagit);border-color:var(--murekkep)}
-.cip{background:var(--satir);border:1.5px solid var(--cizgi);padding:13px 16px;font-size:16px;border-radius:2px;color:var(--murekkep)}
-.cip:active{background:var(--murekkep);color:var(--kagit)}
+.puan{display:flex;gap:8px}
+.puan button{flex:1;background:var(--satir);border:1.5px solid var(--cizgi);padding:13px 0;font-size:17px;border-radius:2px;font-variant-numeric:tabular-nums}
+.puan button.secili{background:var(--murekkep);color:var(--kagit);border-color:var(--murekkep)}
 .vazgec{width:100%;background:none;color:var(--soluk);padding:16px 0 0;font-size:15px;text-decoration:underline}
+.plan-not{background:var(--murekkep);color:var(--kagit);padding:13px 15px;margin-top:16px;font-size:15px;line-height:1.5;border-radius:2px}
+.plan-not[hidden]{display:none}
+.saat-satir{display:flex;gap:10px;align-items:center;margin-top:14px}
+.saat-satir input{flex:1}
 
-/* geri sayım */
-.geri{position:fixed;left:0;right:0;bottom:calc(74px + env(safe-area-inset-bottom));background:var(--murekkep);color:var(--kagit);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;z-index:15}
+.geri{position:fixed;left:0;right:0;bottom:calc(78px + env(safe-area-inset-bottom));background:var(--murekkep);color:var(--kagit);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;z-index:15}
 .geri[hidden]{display:none}
 .geri b{font-variant-numeric:tabular-nums;font-size:19px;font-family:Georgia,serif}
 .geri button{background:none;color:var(--kagit);text-decoration:underline;font-size:14px}
 
-/* sekmeler */
 nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--kagit);border-top:1px solid var(--cizgi);padding-bottom:env(safe-area-inset-bottom);z-index:16}
 nav button{flex:1;background:none;padding:16px 0 17px;font-size:14px;color:var(--soluk);border-top:3px solid transparent;margin-top:-1px}
+nav button.aktif{color:var(--murekkep);font-weight:600;border-top-color:var(--damga)}
+section[hidden]{display:none}
+.not{font-size:15px;color:var(--soluk);margin-top:14px;line-height:1.6}
+:focus-visible{outline:2px solid var(--damga);outline-offset:2px}
 .rehber{padding-top:8px}
 .rehber .giris{font-family:Georgia,serif;font-size:19px;line-height:1.5;border-left:4px solid var(--murekkep);padding-left:16px;margin:14px 0 6px}
 .rehber h3{font-size:18px;margin:30px 0 8px;padding-bottom:7px;border-bottom:1px solid var(--cizgi)}
@@ -143,23 +154,19 @@ nav button{flex:1;background:none;padding:16px 0 17px;font-size:14px;color:var(-
 .rehber ul,.rehber ol{margin:10px 0;padding-left:22px}
 .rehber li{font-size:16px;line-height:1.6;margin-bottom:10px;padding-left:3px}
 .rehber li::marker{color:var(--damga)}
-nav button.aktif{color:var(--murekkep);font-weight:600;border-top-color:var(--damga)}
-section[hidden]{display:none}
-.not{font-size:15px;color:var(--soluk);margin-top:14px;line-height:1.6}
-:focus-visible{outline:2px solid var(--damga);outline-offset:2px}
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <div class="ust"><h1 id="baslik">Sayaç</h1><span id="tarih"></span></div>
 
-  <!-- BUGÜN -->
   <section id="s-bugun">
     <div class="uyari-saat" id="riskUyari" hidden></div>
     <div class="hatirlat" id="hatirlat" hidden></div>
     <div class="sayac">
       <div class="rakam" id="bugunSayi">0</div>
+      <div class="kronometre" id="kron">—</div>
+      <div class="kron-alt" id="kronAlt"></div>
       <div class="mini-seri" id="miniSeri"></div>
       <div class="altbilgi" id="bugunAlt"></div>
     </div>
@@ -168,31 +175,44 @@ section[hidden]{display:none}
       <button class="kaydet" id="btnIctim">İçtim</button>
       <button class="bekle" id="btnBekle">20 dk ertele</button>
     </div>
+    <button class="gonder ikinci" id="btnGecmis">Geçmişe kayıt ekle</button>
     <h2>Bugünün kaydı</h2>
     <div class="defter" id="bugunListe"></div>
     <div class="koc" id="bugunKoc"></div>
   </section>
 
-  <!-- RAPOR -->
   <section id="s-rapor" hidden>
     <h2>Kasa</h2>
     <div class="defter" id="kasa"></div>
+    <div id="tasarrufHedef"></div>
+    <h2>Haftalık kota</h2>
+    <div id="kota"></div>
     <h2>Son 7 gün</h2>
     <div class="bar" id="grafik"></div>
     <div class="olcu" id="olcu"></div>
+    <h2>Yıl haritası</h2>
+    <div class="harita" id="harita"></div>
+    <div class="lejant"><span>az</span><i style="background:var(--ince)"></i><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i><span>çok</span><i class="sifir" style="margin-left:10px"></i><span>sıfır gün</span></div>
+    <h2>Rekorlar</h2>
+    <div class="defter" id="rekorlar"></div>
     <h2>Saat dağılımı</h2>
     <div class="defter" id="saatListe"></div>
     <h2>Tetikler</h2>
     <div class="defter" id="tetikListe"></div>
+    <h2>Bağlam</h2>
+    <div class="defter" id="baglamListe"></div>
+    <h2>Bahaneler</h2>
+    <div class="defter" id="bahaneListe"></div>
     <h2>Yedek davranışlar</h2>
     <div class="defter" id="davranisListe"></div>
+    <h2>Haftalık deney</h2>
+    <div id="deneyKutu"></div>
     <h2>Değerlendirme</h2>
     <div class="koc" id="raporKoc"></div>
     <button class="gonder" id="btnKoc">Koçtan yorum iste</button>
-    <button class="gonder" id="btnYzRapor" style="background:transparent;color:var(--murekkep);border:1.5px solid var(--murekkep);margin-top:12px">Yapay zekâ için rapor hazırla</button>
+    <button class="gonder ikinci" id="btnYzRapor">Yapay zekâ için rapor hazırla</button>
   </section>
 
-  <!-- GÜNLÜK -->
   <section id="s-gunluk" hidden>
     <h2>Günlük check-in</h2>
     <p class="not">Buradaki alanlar sigara sayını etkileyen değişkenler. Yeterli gün birikince rapor sekmesi hangisinin sayıyı yukarı çektiğini gösterir.</p>
@@ -209,7 +229,6 @@ section[hidden]{display:none}
     <div class="koc" id="gunlukKoc" hidden></div>
   </section>
 
-  <!-- AYAR -->
   <section id="s-ayar" hidden>
     <h2>Sınır</h2>
     <label for="hedef">Bugünün üst sınırı (adet)</label><input id="hedef" type="number" inputmode="numeric" min="0">
@@ -221,6 +240,11 @@ section[hidden]{display:none}
     <button class="gonder" id="btnPlan">Planı başlat</button>
     <p class="not" id="planDurum"></p>
 
+    <h2>Aralık hedefi</h2>
+    <p class="not">İki sigara arasında en az kaç dakika geçsin. Ana ekrandaki kronometre bu hedefe göre renk değiştirir.</p>
+    <label for="aralik">Minimum aralık (dakika)</label><input id="aralik" type="number" inputmode="numeric" min="0" step="15">
+    <button class="gonder" id="btnAralik">Aralığı kaydet</button>
+
     <h2>Bırakma tarihi</h2>
     <label for="birakma">Hedef tarih</label><input id="birakma" type="date">
     <button class="gonder" id="btnBirakma">Tarihi kaydet</button>
@@ -231,8 +255,19 @@ section[hidden]{display:none}
     <label for="taban">Eski günlük adedin (tasarruf hesabı için)</label><input id="taban" type="number" inputmode="numeric" min="0">
     <button class="gonder" id="btnPara">Kaydet</button>
 
+    <h2>Tasarruf hedefi</h2>
+    <label for="thAd">Ne alacaksın</label><input id="thAd" type="text" placeholder="Örnek: kulaklık">
+    <label for="thTutar">Tutarı (TL)</label><input id="thTutar" type="number" inputmode="numeric" min="0">
+    <button class="gonder" id="btnTh">Hedefi kaydet</button>
+
+    <h2>Haftalık deney</h2>
+    <p class="not">Bu hafta test edeceğin tek hipotezi yaz. Pazar günü rapor sonucu söyler.</p>
+    <label for="deneyMetin">Hipotez</label><input id="deneyMetin" type="text" placeholder="Kahveyi 3 fincana indirirsem sigara düşer">
+    <button class="gonder" id="btnDeney">Deneyi başlat</button>
+
     <h2>Kayıtlar</h2>
     <div class="defter" id="gecmis"></div>
+
     <h2>Veri taşıma</h2>
     <p class="not">Claude içindeki kayıtla Safari'deki kayıt ayrıdır. Birinden metni kopyala, diğerine yapıştır.</p>
     <textarea id="aktar" rows="4" placeholder="Veri metni"></textarea>
@@ -240,63 +275,52 @@ section[hidden]{display:none}
       <button class="bekle" id="btnKopya">Veriyi dışa aktar</button>
       <button class="bekle" id="btnYukle">Metni içe aktar</button>
     </div>
-    <button class="gonder" id="btnCsv" style="background:transparent;color:var(--murekkep);border:1.5px solid var(--murekkep)">CSV olarak dışa aktar</button>
+    <button class="gonder ikinci" id="btnCsv">CSV olarak dışa aktar</button>
     <p class="not">Veri bu cihazda saklanır. Silmek geri alınamaz.</p>
     <button class="gonder" id="btnSifirla" style="background:var(--damga)">Tüm veriyi sil</button>
   </section>
-
-  <!-- REHBER -->
   <section id="s-rehber" hidden>
     <div class="rehber">
       <p class="giris">Bu uygulama seni sigaradan caydırmaz. Ne kadar, ne zaman ve neden içtiğini rakama çevirir. Karar senin, veri onun işi.</p>
 
-      <h3>Kurulum: üç alan</h3>
-      <p>Ayar sekmesini aç, sırayla doldur. Bunlar girilmeden kasa ve sınır çalışmaz.</p>
+      <h3>Kurulum</h3>
       <ol>
         <li><b>Paket fiyatı ve pakette kaç adet</b> — harcamanın ve tasarrufun hesabı buradan çıkar.</li>
-        <li><b>Eski günlük adedin</b> — tasarruf bu sayıya göre ölçülür. Olduğundan az yazma, kendini kandırırsın.</li>
-        <li><b>Azalan plan</b> — bugünkü ortalamanı başlangıç sınırı olarak gir. Her hafta kendiliğinden bir azalır.</li>
+        <li><b>Eski günlük adedin</b> — tasarruf bu sayıya göre ölçülür. Olduğundan az yazma.</li>
+        <li><b>Azalan plan</b> — bugünkü ortalamanı başlangıç sınırı olarak gir, her hafta bir azalır.</li>
+        <li><b>Aralık hedefi</b> — iki sigara arasında en az kaç dakika olsun. 90 dakikayla başla.</li>
       </ol>
 
-      <h3>Günlük kullanım</h3>
+      <h3>Kayıt ekranı</h3>
+      <p>"İçtim"e bastığında tek ekran açılır: saat, tetik, bağlam ve istek puanı. Yalnız tetik zorunlu, gerisi boş kalabilir ama boş kalan her alan raporu zayıflatır.</p>
       <ul>
-        <li><b>Her sigarada "İçtim"e bas.</b> Sonradan toplu girme; saat bilgisi bozulur, saat dağılımı işe yaramaz hale gelir.</li>
-        <li><b>Tetiği seç.</b> Emin değilsen en yakınını seç, boş bırakma. Tetik verisi olmadan uygulama sana ne söyleyeceğini bilemez.</li>
-        <li><b>İstek geldiğinde önce "20 dk ertele".</b> Yerine koyacağın davranışı seçmen istenir. Süre dolarsa "atlatıldı", dayanamazsan "düştü" olarak kaydedilir — Rapor sekmesi hangi davranışın kaç kez tuttuğunu yüzdeyle gösterir.</li>
-        <li><b>Akşam Günlük sekmesini doldur.</b> Altı alan, hepsi zorunlu.</li>
+        <li><b>İstek puanı (1-5)</b> — ne kadar istediğini işaretle. 1 ve 2'ler otomatik pilottaki sigaralardır; en kolay bırakılanlar onlardır.</li>
+        <li><b>Bağlam</b> — nerede ve kiminle. Tetikten ayrı ikinci boyut; hangi ortamın sorun olduğunu gösterir.</li>
+        <li><b>Plan hatırlatması</b> — daha önce o tetik için bir plan yazdıysan, tetiği seçtiğin anda kendi cümlen ekrana gelir.</li>
+        <li><b>Sürtünme kapısı</b> — sınırı aştıysan kaydet düğmesi 30 saniye beklenir. Otomatik pilotu kırmak için.</li>
+        <li><b>Geçmişe kayıt</b> — unuttuğun sigarayı saatini girerek sonradan ekle. Eksik kayıt raporun tamamını bozar.</li>
       </ul>
 
-      <h3>Sekmeler</h3>
-      <ul>
-        <li><b>Bugün</b> — sayı, sınır, sıfır serisi ve bugünün kayıt listesi. Yanlış bastıysan satırdaki "sil" ile kaldır.</li>
-        <li><b>Rapor</b> — kasa, 7 gün grafiği, saat dağılımı, tetikler ve değerlendirme.</li>
-        <li><b>Günlük</b> — uyku, stres, enerji, hareket, kahve, alkol. Bunlar sigara sayını açıklayan değişkenler.</li>
-        <li><b>Ayar</b> — sınır, plan, fiyat, veri taşıma, CSV, silme.</li>
-      </ul>
+      <h3>Erteleme</h3>
+      <p>İstek geldiğinde "20 dk ertele"ye bas, yerine koyacağın davranışı seç. Süre dolarsa "atlatıldı", dayanamazsan "düştü" yazılır. Rapor hangi davranışın kaç kez tuttuğunu yüzdeyle gösterir.</p>
 
-      <h3>Rakamlar ne diyor</h3>
-      <ul>
-        <li><b>Kırmızı sayı</b> — günün sınırını aştın. Nüks ekranı açılır, üç soru sorar.</li>
-        <li><b>Yeşil sayı</b> — sıfır gün. Seri sayacı buradan büyür.</li>
-        <li><b>Kırmızı bant</b> — en riskli iki saatinden birindesin. 14 günde en az 10 kayıt birikince çıkar.</li>
-        <li><b>Bağlantı cümleleri</b> — "stresli günlerde ortalama 6.2, sakin günlerde 3.1" gibi. En az beş günlük check-in ister.</li>
-      </ul>
+      <h3>Sınır aşımı</h3>
+      <p>Sınırı geçtiğinde üç şey sorulur: his, bahane ve bu tetik için yeni planın. Bahaneler raporda toplanır — en sık kullandığın bahaneyi rakamla görmek, onu bir daha kullanmayı zorlaştırır.</p>
 
-      <h3>Ne zaman ne görünür</h3>
+      <h3>Rapor</h3>
       <ul>
-        <li>1. gün: sayaç, sınır, kasa.</li>
-        <li>5. gün: günlük check-in bağlantıları.</li>
-        <li>7. gün: haftalık trend ve önceki haftayla karşılaştırma.</li>
-        <li>14. gün: riskli saat uyarısı.</li>
+        <li><b>Kasa</b> — günlük, aylık, yıllık harcama ve biriken tasarruf. Tasarruf hedefi girdiysen ilerleme çubuğu.</li>
+        <li><b>Haftalık kota</b> — günlük sınırların toplamı. Salı fazla içersen cuma hakkın azalır; gün değil hafta kapanır.</li>
+        <li><b>Yıl haritası</b> — 365 kutucuk, koyulaştıkça yoğun gün. Yeşil kutular sıfır günler.</li>
+        <li><b>Rekorlar</b> — en uzun sigarasız aralık, en uzun sıfır serisi, en iyi hafta, kayıt disiplini.</li>
+        <li><b>Haftalık deney</b> — pazar günü hipotezin doğrulandı mı, rakamla söylenir.</li>
       </ul>
 
       <h3>Yapay zekâ ile kullanım</h3>
-      <p>Rapor sekmesinin altındaki <b>"Yapay zekâ için rapor hazırla"</b> düğmesi verini hazır bir metne çevirir: 30 günlük sayılar, saat dağılımı, tetikler, check-in tablosu, yedek davranış başarı oranları ve sınır aşımı notları. Koçluk kuralları metnin başına eklenir, ayrıca açıklama yazman gerekmez.</p>
-      <p><b>Kopyala</b> panoya alır, <b>Paylaş</b> iOS paylaşım menüsünü açar — oradan doğrudan bir yapay zekâ uygulamasına gönderebilirsin. Haftada bir, tercihen pazar günü yap; günlük göndermek anlamlı fark üretmez.</p>
-      <p>Ham veri isteyen bir araç kullanıyorsan Ayar sekmesindeki <b>CSV</b> çıktısını al.</p>
+      <p>Rapor sekmesinin altındaki <b>"Yapay zekâ için rapor hazırla"</b> düğmesi verini hazır bir metne çevirir; koçluk kuralları metnin başında olur. <b>Kopyala</b> panoya alır, <b>Paylaş</b> iOS paylaşım menüsünü açar. Haftada bir, tercihen pazar günü yap.</p>
 
       <h3>Veri</h3>
-      <p>Kayıtlar cihazda tutulur, hiçbir yere gönderilmez. Claude içindeki kayıtla Safari'deki kayıt <b>ayrıdır</b>. Taşımak için Ayar → "Veriyi dışa aktar" ile metni al, diğer ortamda aynı alana yapıştırıp "Metni içe aktar" de. Uygulamayı ana ekrana eklemeden önce bunu yap.</p>
+      <p>Kayıtlar cihazda tutulur, hiçbir yere gönderilmez. Claude içindeki kayıtla Safari'deki kayıt <b>ayrıdır</b>. Taşımak için Ayar → "Veriyi dışa aktar" ile metni al, diğer ortamda yapıştırıp "Metni içe aktar" de. Uygulama 30 günde bir yedek almanı hatırlatır; tarayıcı verisi silinebilir, tek kopya risklidir.</p>
 
       <h3>Sınır</h3>
       <p>Bu bir sayaç, doktor değil. Göğüs ağrısı, şiddetli yoksunluk, uzun süren uykusuzluk veya ciddi ruhsal zorlanma varsa uygulamayla değil hekimle konuş.</p>
@@ -311,16 +335,28 @@ section[hidden]{display:none}
   <button id="geriIptal">Dayanamadım, kaydet</button>
 </div>
 
-<div class="ort" id="ortYz" hidden>
+<nav>
+  <button data-s="bugun" class="aktif">Bugün</button>
+  <button data-s="rapor">Rapor</button>
+  <button data-s="gunluk">Günlük</button>
+  <button data-s="ayar">Ayar</button>
+  <button data-s="rehber">Rehber</button>
+</nav>
+
+<div class="ort" id="ortKayit" hidden>
   <div class="kart">
-    <h1>Yapay zekâ raporu</h1>
-    <p class="not" style="margin-top:6px">Kopyala, herhangi bir yapay zekâya yapıştır. Koçluk kuralları metnin içinde, ayrıca açıklama yazman gerekmez.</p>
-    <textarea id="yzMetin" rows="8"></textarea>
-    <div class="eylem" style="margin-top:12px">
-      <button class="bekle" id="yzKopya">Kopyala</button>
-      <button class="bekle" id="yzPaylas">Paylaş</button>
+    <h1 id="kayitBaslik">Kayıt</h1>
+    <div class="saat-satir">
+      <input id="kayitSaat" type="time">
+      <span class="not" style="margin:0;flex:none">saat</span>
     </div>
-    <button class="vazgec" id="yzKapat">Kapat</button>
+    <div class="grup"><span>Tetik (zorunlu)</span><div class="cipler" id="tetikCipler"></div></div>
+    <div class="plan-not" id="planNot" hidden></div>
+    <div class="grup"><span>Nerede</span><div class="cipler" id="yerCipler"></div></div>
+    <div class="grup"><span>Kiminle</span><div class="cipler" id="sosyalCipler"></div></div>
+    <div class="grup"><span>Ne kadar istedin (1 az, 5 çok)</span><div class="puan" id="puanlar"></div></div>
+    <button class="gonder" id="kayitTamam">Kaydet</button>
+    <button class="vazgec" id="kayitVazgec">Vazgeç</button>
   </div>
 </div>
 
@@ -337,642 +373,679 @@ section[hidden]{display:none}
   <div class="kart">
     <h1>Sınır aşıldı</h1>
     <p class="not" id="nuksBilgi"></p>
-    <p class="not" style="margin-top:14px;color:var(--murekkep)">Ne hissediyordun?</p>
-    <div class="cipler" id="hisCipler"></div>
+    <div class="grup"><span>Ne hissediyordun</span><div class="cipler" id="hisCipler"></div></div>
+    <div class="grup"><span>Kendine ne dedin</span><div class="cipler" id="bahaneCipler"></div></div>
     <label for="nuksPlan">Bu tetik bir daha geldiğinde ne yapacaksın?</label>
     <input id="nuksPlan" type="text" placeholder="Su iç, 5 dk yürü, sakız">
     <button class="gonder" id="nuksKaydet">Kaydet</button>
   </div>
 </div>
 
-<nav>
-  <button data-s="bugun" class="aktif">Bugün</button>
-  <button data-s="rapor">Rapor</button>
-  <button data-s="gunluk">Günlük</button>
-  <button data-s="ayar">Ayar</button>
-  <button data-s="rehber">Rehber</button>
-</nav>
-
-<div class="ort" id="ortu" hidden>
+<div class="ort" id="ortYz" hidden>
   <div class="kart">
-    <h1>Hangi tetik?</h1>
-    <p class="not" style="margin-top:6px">Saat <b id="ortSaat"></b>. Kaydetmeden önce tek dokunuş.</p>
-    <div class="cipler" id="cipler"></div>
-    <button class="vazgec" id="ortVazgec">Vazgeç</button>
+    <h1>Yapay zekâ raporu</h1>
+    <p class="not" style="margin-top:6px">Kopyala, herhangi bir yapay zekâya yapıştır. Koçluk kuralları metnin içinde.</p>
+    <textarea id="yzMetin" rows="8"></textarea>
+    <div class="eylem" style="margin-top:12px">
+      <button class="bekle" id="yzKopya">Kopyala</button>
+      <button class="bekle" id="yzPaylas">Paylaş</button>
+    </div>
+    <button class="vazgec" id="yzKapat">Kapat</button>
   </div>
 </div>
-
 <script>
-const TETIKLER = ["Sabah kahvesi","İş stresi","Yemek sonrası","Mola","Sosyal ortam","Araç","Akşam","Can sıkıntısı","Telefon/ekran","Alkol"];
-const HISLER = ["Kaygı","Öfke","Sıkıntı","Yorgunluk","Baskı","Sevinç","Sadece alışkanlık"];
-const DAVRANISLAR = ["Su içeceğim","5 dk yürüyüş","Nefes egzersizi","Sakız","İşe döneceğim","Sadece bekleyeceğim"];
-const bosVeri = {logs:[], checkins:{}, hedefler:{}, direnc:[], baslangic:null,
-  ayar:{fiyat:null, paket:20, taban:null, birakma:null}, plan:{sinir:null, gun:null}};
-let D = JSON.parse(JSON.stringify(bosVeri));
-let timer = null, kalan = 0, sonLogTs = null, secilenHis = null, aktifDavranis = null;
+const TETIKLER=["Sabah kahvesi","İş stresi","Yemek sonrası","Mola","Sosyal ortam","Araç","Akşam","Can sıkıntısı","Telefon/ekran","Alkol"];
+const YERLER=["Ev","İş","Dışarı","Araç","Kafe"];
+const SOSYAL=["Yalnız","Kalabalık"];
+const HISLER=["Kaygı","Öfke","Sıkıntı","Yorgunluk","Baskı","Sevinç","Sadece alışkanlık"];
+const BAHANELER=["Stresliydim","Sadece bugün","Zaten az içtim","Sosyal ortamdı","Hak ettim","Yarın telafi ederim","Son bir tane"];
+const DAVRANISLAR=["Su içeceğim","5 dk yürüyüş","Nefes egzersizi","Sakız","İşe döneceğim","Sadece bekleyeceğim"];
+const KILOMETRE=[{g:3,ad:"3. gün"},{g:7,ad:"1. hafta"},{g:30,ad:"1. ay"},{g:90,ad:"3. ay"}];
 
-const $ = s => document.querySelector(s);
-const gun = d => { const x = d||new Date(); return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0"); };
-const saatStr = ts => { const d=new Date(ts); return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); };
-const gecmisGun = n => { const d=new Date(); d.setDate(d.getDate()-n); return gun(d); };
-const sayim = g => D.logs.filter(l=>l.gun===g).length;
-const gunFarki = (a,b) => Math.round((new Date(b)-new Date(a))/86400000);
+const bosVeri={logs:[],checkins:{},hedefler:{},direnc:[],baslangic:null,
+  ayar:{fiyat:null,paket:20,taban:null,birakma:null,aralik:null,thAd:null,thTutar:null},
+  plan:{sinir:null,gun:null},deney:[],sonYedek:null};
+let D=JSON.parse(JSON.stringify(bosVeri));
+let timer=null,kalan=0,sonLogTs=null,secilenHis=null,secilenBahane=null,aktifDavranis=null;
+let kSaat=null,kTetik=null,kYer=null,kSosyal=null,kPuan=null,kDuzenlenen=null,kapiTimer=null,kapiKalan=0;
 
-function hedefAl(g){
-  if(D.hedefler[g]!=null) return D.hedefler[g];
-  if(D.plan && D.plan.sinir!=null && D.plan.gun){
-    const hafta = Math.floor(gunFarki(D.plan.gun,g)/7);
-    if(hafta>=0) return Math.max(0, D.plan.sinir - hafta);
-  }
-  return null;
-}
+const $=s=>document.querySelector(s);
+const gun=d=>{const x=d||new Date();return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0");};
+const saatStr=ts=>{const d=new Date(ts);return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");};
+const gecmisGun=n=>{const d=new Date();d.setDate(d.getDate()-n);return gun(d);};
+const sayim=g=>D.logs.filter(l=>l.gun===g).length;
+const gunFarki=(a,b)=>Math.round((new Date(b)-new Date(a))/86400000);
+const tl=n=>n.toLocaleString("tr-TR",{maximumFractionDigits:0})+" TL";
 
-function seriHesapla(){
-  let s=0;
-  for(let i=0;i<400;i++){
-    const g=gecmisGun(i);
-    if(D.baslangic && g<D.baslangic) break;
-    if(sayim(g)===0){ s++; } else { break; }
-  }
-  return s;
-}
-
-const KILOMETRE = [{g:3,ad:"3. gün"},{g:7,ad:"1. hafta"},{g:30,ad:"1. ay"},{g:90,ad:"3. ay"}];
-
-function birimFiyat(){
-  const a=D.ayar||{};
-  if(!a.fiyat || !a.paket) return null;
-  return a.fiyat / a.paket;
-}
-
-function kasaCiz(){
-  const bf = birimFiyat();
-  const k = $("#kasa");
-  if(!bf){ k.innerHTML = `<div class="bos">Paket fiyatı girilmemiş. Ayar sekmesinden fiyatı ve pakette kaç adet olduğunu gir. Rakama dönüşmeyen harcama soyut kalır.</div>`; return; }
-  const tl = n => n.toLocaleString("tr-TR",{maximumFractionDigits:0})+" TL";
-  const b=gun();
-  const bugun = sayim(b)*bf;
-  let son30=0, gunSayisi=0;
-  for(let i=0;i<30;i++){ const g=gecmisGun(i); if(D.baslangic && g<D.baslangic) break; son30 += sayim(g)*bf; gunSayisi++; }
-  const gunlukOrt = gunSayisi ? son30/gunSayisi : 0;
-  const taban = D.ayar.taban;
-  let tasarruf=0, atlanan=0;
-  if(taban!=null){
-    for(let i=0;i<400;i++){
-      const g=gecmisGun(i);
-      if(D.baslangic && g<D.baslangic) break;
-      const fark = taban - sayim(g);
-      if(fark>0){ tasarruf += fark*bf; atlanan += fark; }
-    }
-  }
-  const dk = D.logs.length*5;
-  let h = "";
-  h += `<div class="satir"><span class="tetik" style="flex:1">Bugün</span><b>${tl(bugun)}</b></div>`;
-  h += `<div class="satir"><span class="tetik" style="flex:1">Son 30 gün</span><b>${tl(son30)}</b></div>`;
-  h += `<div class="satir"><span class="tetik" style="flex:1">Bu hızla yıllık</span><b>${tl(gunlukOrt*365)}</b></div>`;
-  if(taban!=null) h += `<div class="satir kasa-vurgu"><span class="tetik" style="flex:1">İçmediklerinden biriken</span><b>${tl(tasarruf)}</b></div>`;
-  h += `<div class="satir"><span class="tetik" style="flex:1">Toplam kayıt ve harcanan süre</span><b>${D.logs.length} · ${Math.floor(dk/60)} sa</b></div>`;
-  k.innerHTML = h;
-}
-
-const depo = {
+const depo={
   async oku(){
-    if(window.storage){
-      try{ const r = await window.storage.get("sayac-veri"); if(r&&r.value) return r.value; }catch(e){}
-    }
-    try{ return localStorage.getItem("sayac-veri"); }catch(e){ return null; }
+    if(window.storage){try{const r=await window.storage.get("sayac-veri");if(r&&r.value)return r.value;}catch(e){}}
+    try{return localStorage.getItem("sayac-veri");}catch(e){return null;}
   },
   async yaz(s){
     let ok=false;
-    if(window.storage){ try{ await window.storage.set("sayac-veri", s); ok=true; }catch(e){} }
-    try{ localStorage.setItem("sayac-veri", s); ok=true; }catch(e){}
+    if(window.storage){try{await window.storage.set("sayac-veri",s);ok=true;}catch(e){}}
+    try{localStorage.setItem("sayac-veri",s);ok=true;}catch(e){}
     return ok;
   }
 };
-
 async function yukle(){
-  try{ const s = await depo.oku(); if(s) D = Object.assign(JSON.parse(JSON.stringify(bosVeri)), JSON.parse(s)); }
-  catch(e){ /* ilk açılış */ }
-  if(!D.baslangic){ D.baslangic = gun(); kaydet(); }
-  ciz();
+  try{const s=await depo.oku();if(s){const y=JSON.parse(s);D=Object.assign(JSON.parse(JSON.stringify(bosVeri)),y);D.ayar=Object.assign({},bosVeri.ayar,y.ayar||{});}}catch(e){}
+  if(!D.baslangic){D.baslangic=gun();kaydet();}
+  ciz();setInterval(kronCiz,1000);
 }
 async function kaydet(){
-  const ok = await depo.yaz(JSON.stringify(D));
-  $("#uyari").textContent = ok ? "" : "Kayıt yazılamadı. Tarayıcı ayarlarında site verisine izin ver.";
+  const ok=await depo.yaz(JSON.stringify(D));
+  $("#uyari").textContent=ok?"":"Kayıt yazılamadı. Tarayıcı ayarlarında site verisine izin ver.";
 }
 
-/* --- kayıt --- */
-$("#btnIctim").onclick = () => {
-  $("#ortSaat").textContent = saatStr(Date.now());
-  const c = $("#cipler"); c.innerHTML = "";
-  TETIKLER.forEach(t=>{
-    const b=document.createElement("button"); b.className="cip"; b.textContent=t;
-    b.onclick=()=>ekle(t); c.appendChild(b);
-  });
-  $("#ortu").hidden = false;
-};
-$("#ortVazgec").onclick = ()=> $("#ortu").hidden = true;
-
-async function ekle(tetik){
-  const ts = Date.now();
-  D.logs.push({ts, gun:gun(), saat:new Date().getHours(), tetik});
-  $("#ortu").hidden = true;
-  durdur(false);
-  await kaydet(); ciz();
-  const h = hedefAl(gun());
-  if(h!=null && sayim(gun())>h) nuksAc(ts, tetik, h);
+function hedefAl(g){
+  if(D.hedefler[g]!=null)return D.hedefler[g];
+  if(D.plan&&D.plan.sinir!=null&&D.plan.gun){
+    const h=Math.floor(gunFarki(D.plan.gun,g)/7);
+    if(h>=0)return Math.max(0,D.plan.sinir-h);
+  }
+  return null;
 }
-
-function nuksAc(ts, tetik, hedef){
-  sonLogTs = ts; secilenHis = null;
-  $("#nuksBilgi").innerHTML = "Saat <b>"+saatStr(ts)+"</b>, tetik <b>"+tetik+"</b>. Sınır "+hedef+", sayı "+sayim(gun())+". Dram yok, ders var.";
-  const c=$("#hisCipler"); c.innerHTML="";
-  HISLER.forEach(x=>{
-    const b=document.createElement("button"); b.className="cip"; b.textContent=x;
-    b.onclick=()=>{ secilenHis=x; c.querySelectorAll(".cip").forEach(y=>y.classList.remove("secili")); b.classList.add("secili"); };
+function seriHesapla(){
+  let s=0;
+  for(let i=0;i<400;i++){const g=gecmisGun(i);if(D.baslangic&&g<D.baslangic)break;if(sayim(g)===0)s++;else break;}
+  return s;
+}
+function enCok(arr){
+  if(!arr.length)return null;
+  const m={};arr.forEach(x=>{if(x)m[x]=(m[x]||0)+1;});
+  const e=Object.entries(m).sort((a,b)=>b[1]-a[1]);
+  return e.length?e[0]:null;
+}
+function birimFiyat(){const a=D.ayar||{};return(a.fiyat&&a.paket)?a.fiyat/a.paket:null;}
+function sonPlan(tetik){
+  const p=D.logs.filter(l=>l.tetik===tetik&&l.plan&&l.plan!=="—");
+  return p.length?p[p.length-1].plan:null;
+}
+function haftaBasi(d){
+  const x=d?new Date(d):new Date();
+  const g=(x.getDay()+6)%7;
+  x.setDate(x.getDate()-g);
+  return gun(x);
+}
+function ilkSigaraDk(g){
+  const l=D.logs.filter(x=>x.gun===g).sort((a,b)=>a.ts-b.ts);
+  if(!l.length)return null;
+  const d=new Date(l[0].ts);
+  return d.getHours()*60+d.getMinutes();
+}
+const dkStr=m=>String(Math.floor(m/60)).padStart(2,"0")+":"+String(Math.round(m%60)).padStart(2,"0");
+/* ---------- kayıt ekranı ---------- */
+function cipDoldur(hedef,liste,secGetter,secSetter,sonra){
+  const c=$(hedef);c.innerHTML="";
+  liste.forEach(x=>{
+    const b=document.createElement("button");
+    b.className="cip"+(secGetter()===x?" secili":"");
+    b.textContent=x;
+    b.onclick=()=>{
+      secSetter(secGetter()===x?null:x);
+      c.querySelectorAll(".cip").forEach(y=>y.classList.remove("secili"));
+      if(secGetter()===x)b.classList.add("secili");
+      if(sonra)sonra();
+    };
     c.appendChild(b);
   });
-  $("#nuksPlan").value="";
+}
+
+function kayitAc(gecmisMi){
+  kTetik=null;kYer=null;kSosyal=null;kPuan=null;kDuzenlenen=null;
+  const n=new Date();
+  $("#kayitSaat").value=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0");
+  $("#kayitBaslik").textContent=gecmisMi?"Geçmişe kayıt":"Kayıt";
+  $("#planNot").hidden=true;
+  cipDoldur("#tetikCipler",TETIKLER,()=>kTetik,v=>kTetik=v,planGoster);
+  cipDoldur("#yerCipler",YERLER,()=>kYer,v=>kYer=v);
+  cipDoldur("#sosyalCipler",SOSYAL,()=>kSosyal,v=>kSosyal=v);
+  const p=$("#puanlar");p.innerHTML="";
+  [1,2,3,4,5].forEach(i=>{
+    const b=document.createElement("button");b.textContent=i;
+    b.onclick=()=>{kPuan=kPuan===i?null:i;p.querySelectorAll("button").forEach(y=>y.classList.remove("secili"));if(kPuan===i)b.classList.add("secili");};
+    p.appendChild(b);
+  });
+  kapiKur(gecmisMi);
+  $("#ortKayit").hidden=false;
+}
+function planGoster(){
+  const p=kTetik?sonPlan(kTetik):null;
+  if(p){$("#planNot").hidden=false;$("#planNot").innerHTML="Geçen sefer bu tetik için şunu yazmıştın: <b>"+p+"</b>";}
+  else $("#planNot").hidden=true;
+}
+function kapiKur(gecmisMi){
+  clearInterval(kapiTimer);kapiTimer=null;
+  const h=hedefAl(gun());
+  const asti=!gecmisMi&&h!=null&&sayim(gun())>=h;
+  const btn=$("#kayitTamam");
+  if(!asti){btn.disabled=false;btn.textContent="Kaydet";return;}
+  kapiKalan=30;btn.disabled=true;
+  const say=()=>{
+    btn.textContent=kapiKalan>0?("Kaydet ("+kapiKalan+" sn)"):"Kaydet";
+    if(kapiKalan<=0){btn.disabled=false;clearInterval(kapiTimer);kapiTimer=null;return;}
+    kapiKalan--;
+  };
+  say();kapiTimer=setInterval(say,1000);
+}
+$("#btnIctim").onclick=()=>kayitAc(false);
+$("#btnGecmis").onclick=()=>kayitAc(true);
+$("#kayitVazgec").onclick=()=>{clearInterval(kapiTimer);kapiTimer=null;$("#ortKayit").hidden=true;};
+
+$("#kayitTamam").onclick=async()=>{
+  if(!kTetik){alert("Tetik seç. Bu alan zorunlu.");return;}
+  clearInterval(kapiTimer);kapiTimer=null;
+  const [sa,dk]=$("#kayitSaat").value.split(":").map(Number);
+  const d=new Date();d.setHours(sa||0,dk||0,0,0);
+  let ts=d.getTime();
+  if(ts>Date.now()+60000)ts=Date.now();
+  while(D.logs.some(l=>l.ts===ts))ts++;
+  D.logs.push({ts,gun:gun(d),saat:d.getHours(),tetik:kTetik,yer:kYer||null,sosyal:kSosyal||null,istek:kPuan||null});
+  $("#ortKayit").hidden=true;
+  durdur(false);
+  await kaydet();ciz();
+  const h=hedefAl(gun());
+  if(h!=null&&sayim(gun())>h)nuksAc(ts,kTetik,h);
+};
+
+/* ---------- nüks ---------- */
+function nuksAc(ts,tetik,hedef){
+  sonLogTs=ts;secilenHis=null;secilenBahane=null;
+  $("#nuksBilgi").innerHTML="Saat <b>"+saatStr(ts)+"</b>, tetik <b>"+tetik+"</b>. Sınır "+hedef+", sayı "+sayim(gun())+". Dram yok, ders var.";
+  cipDoldur("#hisCipler",HISLER,()=>secilenHis,v=>secilenHis=v);
+  cipDoldur("#bahaneCipler",BAHANELER,()=>secilenBahane,v=>secilenBahane=v);
+  $("#nuksPlan").value=sonPlan(tetik)||"";
   $("#ortNuks").hidden=false;
 }
-
-$("#nuksKaydet").onclick = async ()=>{
-  const l = D.logs.find(x=>x.ts===sonLogTs);
-  if(l){ l.his = secilenHis||"belirtilmedi"; l.plan = $("#nuksPlan").value.trim()||"—"; }
+$("#nuksKaydet").onclick=async()=>{
+  const l=D.logs.find(x=>x.ts===sonLogTs);
+  if(l){l.his=secilenHis||"belirtilmedi";l.bahane=secilenBahane||"belirtilmedi";l.plan=$("#nuksPlan").value.trim()||"—";}
   $("#ortNuks").hidden=true;
-  await kaydet(); ciz();
+  await kaydet();ciz();
 };
-async function silLog(ts){
-  D.logs = D.logs.filter(l=>l.ts!==ts);
-  await kaydet(); ciz();
-}
+async function silLog(ts){D.logs=D.logs.filter(l=>l.ts!==ts);await kaydet();ciz();}
 
-/* --- erteleme --- */
-$("#btnBekle").onclick = ()=>{
-  if(timer) return;
-  const c=$("#davranisCipler"); c.innerHTML="";
-  DAVRANISLAR.forEach(x=>{
-    const b=document.createElement("button"); b.className="cip"; b.textContent=x;
-    b.onclick=()=>{ aktifDavranis=x; $("#ortDavranis").hidden=true; ertelemeBaslat(); };
-    c.appendChild(b);
-  });
+/* ---------- erteleme ---------- */
+$("#btnBekle").onclick=()=>{
+  if(timer)return;
+  cipDoldur("#davranisCipler",DAVRANISLAR,()=>aktifDavranis,v=>{aktifDavranis=v;if(v){$("#ortDavranis").hidden=true;ertelemeBaslat();}});
   $("#ortDavranis").hidden=false;
 };
-$("#davranisVazgec").onclick = ()=> $("#ortDavranis").hidden = true;
-
+$("#davranisVazgec").onclick=()=>$("#ortDavranis").hidden=true;
 function ertelemeBaslat(){
-  kalan = 20*60; $("#geriSayim").hidden=false; $("#btnBekle").disabled=true;
-  $("#geriEtiket").textContent = aktifDavranis;
-  tick();
-  timer = setInterval(tick,1000);
+  kalan=20*60;$("#geriSayim").hidden=false;$("#btnBekle").disabled=true;
+  $("#geriEtiket").textContent=aktifDavranis;
+  tick();timer=setInterval(tick,1000);
 }
 function tick(){
-  $("#geriDk").textContent = String(Math.floor(kalan/60)).padStart(2,"0")+":"+String(kalan%60).padStart(2,"0");
-  if(kalan<=0){ durdur(true); return; }
+  $("#geriDk").textContent=String(Math.floor(kalan/60)).padStart(2,"0")+":"+String(kalan%60).padStart(2,"0");
+  if(kalan<=0){durdur(true);return;}
   kalan--;
 }
 async function durdur(basarili){
-  if(!timer) return;
-  clearInterval(timer); timer=null;
-  $("#geriSayim").hidden=true; $("#btnBekle").disabled=false;
-  D.direnc.push({ts:Date.now(), gun:gun(), davranis:aktifDavranis||"belirtilmedi", sonuc: basarili?"atlatildi":"dustu"});
+  if(!timer)return;
+  clearInterval(timer);timer=null;
+  $("#geriSayim").hidden=true;$("#btnBekle").disabled=false;
+  D.direnc.push({ts:Date.now(),gun:gun(),davranis:aktifDavranis||"belirtilmedi",sonuc:basarili?"atlatildi":"dustu"});
   aktifDavranis=null;
-  await kaydet(); ciz();
+  await kaydet();ciz();
 }
-$("#geriIptal").onclick = ()=>{ durdur(false); $("#btnIctim").click(); };
-
-/* --- ekran --- */
+$("#geriIptal").onclick=()=>{durdur(false);kayitAc(false);};
+/* ---------- ana ekran ---------- */
 function ciz(){
-  const b = gun(), n = sayim(b), hedef = hedefAl(b);
-  $("#tarih").textContent = new Date().toLocaleDateString("tr-TR",{day:"numeric",month:"long",weekday:"short"});
-  const r = $("#bugunSayi"); r.textContent = n;
-  r.className = "rakam" + (n===0?" sifir":(hedef!=null&&n>hedef?" asti":""));
-  const direnc = D.direnc.filter(x=>x.gun===b && x.sonuc!=="dustu").length;
-  const dun = sayim(gecmisGun(1));
-  $("#bugunAlt").innerHTML = "Sınır <b>"+(hedef!=null?hedef:"—")+"</b> · dün <b>"+dun+"</b> · ertelenen <b>"+direnc+"</b>";
+  const b=gun(),n=sayim(b),hedef=hedefAl(b);
+  $("#tarih").textContent=new Date().toLocaleDateString("tr-TR",{day:"numeric",month:"long",weekday:"short"});
+  const r=$("#bugunSayi");r.textContent=n;
+  r.className="rakam"+(n===0?" sifir":(hedef!=null&&n>hedef?" asti":""));
+  const direnc=D.direnc.filter(x=>x.gun===b&&x.sonuc!=="dustu").length;
+  const ilk=ilkSigaraDk(b);
+  $("#bugunAlt").innerHTML="Sınır <b>"+(hedef!=null?hedef:"—")+"</b> · dün <b>"+sayim(gecmisGun(1))+"</b> · ertelenen <b>"+direnc+"</b><br>İlk sigara <b>"+(ilk!=null?dkStr(ilk):"—")+"</b> · 7 gün ortalaması <b>"+ilkOrt()+"</b>";
+  kronCiz();miniSeriCiz();seriCiz();riskCiz();hatirlatCiz();
 
-  miniSeriCiz();
-  seriCiz();
-  riskCiz();
-  hatirlatCiz();
-
-  const bugunLog = D.logs.filter(l=>l.gun===b).sort((x,y)=>y.ts-x.ts);
-  $("#bugunListe").innerHTML = bugunLog.length ? bugunLog.map(l=>
-    `<div class="satir"><span class="saat">${saatStr(l.ts)}</span><span class="tetik">${l.tetik}</span><button class="sil" data-ts="${l.ts}">sil</button></div>`
-  ).join("") : `<div class="bos">Bugün kayıt yok. Sayı düşükken de bas — sayılmayan sigara veri değil, boşluk.</div>`;
+  const log=D.logs.filter(l=>l.gun===b).sort((x,y)=>y.ts-x.ts);
+  $("#bugunListe").innerHTML=log.length?log.map(l=>{
+    const ek=[l.yer,l.sosyal,l.istek?("istek "+l.istek):null].filter(Boolean).join(" · ");
+    return '<div class="satir"><span class="saat">'+saatStr(l.ts)+'</span><span class="tetik">'+l.tetik+(ek?'<small>'+ek+'</small>':'')+'</span><button class="sil" data-ts="'+l.ts+'">sil</button></div>';
+  }).join(""):'<div class="bos">Bugün kayıt yok. Sayı düşükken de bas — sayılmayan sigara veri değil, boşluk.</div>';
   $("#bugunListe").querySelectorAll(".sil").forEach(x=>x.onclick=()=>silLog(Number(x.dataset.ts)));
+  $("#bugunKoc").innerHTML=gunlukYorum(n,hedef,log);
 
-  $("#bugunKoc").innerHTML = gunlukYorum(n, hedef, dun, bugunLog);
-  $("#hedef").value = D.hedefler[b]!=null?D.hedefler[b]:"";
-  $("#planSinir").value = D.plan && D.plan.sinir!=null ? D.plan.sinir : "";
-  $("#fiyat").value = D.ayar && D.ayar.fiyat!=null ? D.ayar.fiyat : "";
-  $("#adet").value = D.ayar && D.ayar.paket ? D.ayar.paket : 20;
-  $("#taban").value = D.ayar && D.ayar.taban!=null ? D.ayar.taban : "";
-  $("#birakma").value = D.ayar && D.ayar.birakma ? D.ayar.birakma : "";
-  $("#planDurum").textContent = (D.plan && D.plan.sinir!=null)
-    ? "Plan "+D.plan.gun+" tarihinde "+D.plan.sinir+" ile başladı. Bugünün otomatik sınırı: "+hedefAl(b)+"."
-    : "Plan başlatılmadı.";
-  cizRapor();
-  const c = D.checkins[b];
-  $("#gunlukDurum").textContent = c ? "Bugünün check-in'i alındı. Yeniden gönderirsen üzerine yazılır." : "Boş alan bırakma. Eksik günlük, günlük değildir.";
-  gecmisCiz();
+  $("#hedef").value=D.hedefler[b]!=null?D.hedefler[b]:"";
+  $("#planSinir").value=D.plan&&D.plan.sinir!=null?D.plan.sinir:"";
+  $("#aralik").value=D.ayar.aralik!=null?D.ayar.aralik:"";
+  $("#fiyat").value=D.ayar.fiyat!=null?D.ayar.fiyat:"";
+  $("#adet").value=D.ayar.paket||20;
+  $("#taban").value=D.ayar.taban!=null?D.ayar.taban:"";
+  $("#birakma").value=D.ayar.birakma||"";
+  $("#thAd").value=D.ayar.thAd||"";
+  $("#thTutar").value=D.ayar.thTutar!=null?D.ayar.thTutar:"";
+  const dn=aktifDeney();$("#deneyMetin").value=dn?dn.hipotez:"";
+  $("#planDurum").textContent=(D.plan&&D.plan.sinir!=null)?("Plan "+D.plan.gun+" tarihinde "+D.plan.sinir+" ile başladı. Bugünün otomatik sınırı: "+hedefAl(b)+"."):"Plan başlatılmadı.";
+  $("#gunlukDurum").textContent=D.checkins[b]?"Bugünün check-in'i alındı. Yeniden gönderirsen üzerine yazılır.":"Boş alan bırakma. Eksik günlük, günlük değildir.";
+  cizRapor();gecmisCiz();
 }
-
+function ilkOrt(){
+  const v=[];for(let i=0;i<7;i++){const x=ilkSigaraDk(gecmisGun(i));if(x!=null)v.push(x);}
+  return v.length?dkStr(v.reduce((a,b)=>a+b,0)/v.length):"—";
+}
+function kronCiz(){
+  const son=D.logs.slice().sort((a,b)=>b.ts-a.ts)[0];
+  const k=$("#kron"),ka=$("#kronAlt");
+  if(!son){k.textContent="—";k.className="kronometre";ka.textContent="Henüz kayıt yok";return;}
+  const dk=(Date.now()-son.ts)/60000;
+  const sa=Math.floor(dk/60),mm=Math.floor(dk%60);
+  k.textContent=(sa>0?sa+" sa ":"")+mm+" dk";
+  const hedef=D.ayar.aralik;
+  if(hedef){
+    k.className="kronometre"+(dk>=hedef?" iyi":"");
+    ka.textContent=dk>=hedef?("son sigaradan beri · "+hedef+" dk hedefi geçildi"):("son sigaradan beri · hedefe "+Math.ceil(hedef-dk)+" dk");
+  }else{k.className="kronometre";ka.textContent="son sigaradan beri · Ayar'dan aralık hedefi gir";}
+}
 function miniSeriCiz(){
-  const g=[]; for(let i=13;i>=0;i--) g.push(sayim(gecmisGun(i)));
+  const g=[];for(let i=13;i>=0;i--)g.push(sayim(gecmisGun(i)));
   const max=Math.max(...g,1);
-  $("#miniSeri").innerHTML = g.map((v,i)=>{
-    const h=Math.max(Math.round(v/max*34),2);
-    const k = i===13?"son":(v>0?"dolu":"");
-    return `<i class="${k}" style="height:${h}px"></i>`;
-  }).join("");
+  $("#miniSeri").innerHTML=g.map((v,i)=>'<i class="'+(i===13?"son":(v>0?"dolu":""))+'" style="height:'+Math.max(Math.round(v/max*34),2)+'px"></i>').join("");
 }
-
 function seriCiz(){
-  const s = seriHesapla(), e = $("#seri");
-  if(s===0){ e.hidden=true; return; }
+  const s=seriHesapla(),e=$("#seri");
+  if(s===0){e.hidden=true;return;}
   e.hidden=false;
-  const sonraki = KILOMETRE.find(k=>k.g>s);
-  const gecilen = KILOMETRE.filter(k=>k.g<=s).map(k=>k.ad);
-  const oran = sonraki ? Math.round(s/sonraki.g*100) : 100;
-  e.innerHTML =
-    '<div class="seri-ust"><span>Sıfır serisi</span><b>'+s+' gün</b></div>'+
-    '<div class="cubuk"><i style="width:'+oran+'%"></i></div>'+
-    '<p class="not" style="margin-top:10px">'+
-      (gecilen.length?"Geçilen kontrol noktaları: "+gecilen.join(", ")+". ":"")+
-      (sonraki?"Sonraki: "+sonraki.ad+", "+(sonraki.g-s)+" gün kaldı.":"Tüm kontrol noktaları geçildi.")+
-    "</p>";
+  const sonraki=KILOMETRE.find(k=>k.g>s),gecilen=KILOMETRE.filter(k=>k.g<=s).map(k=>k.ad);
+  e.innerHTML='<div class="seri-ust"><span>Sıfır serisi</span><b>'+s+' gün</b></div><div class="cubuk"><i style="width:'+(sonraki?Math.round(s/sonraki.g*100):100)+'%"></i></div><p class="not" style="margin-top:10px">'+(gecilen.length?"Geçilen kontrol noktaları: "+gecilen.join(", ")+". ":"")+(sonraki?"Sonraki: "+sonraki.ad+", "+(sonraki.g-s)+" gün kaldı.":"Tüm kontrol noktaları geçildi.")+"</p>";
 }
-
 function riskCiz(){
-  const u = $("#riskUyari"), simdi = new Date().getHours();
-  const son14 = D.logs.filter(l=>l.gun>=gecmisGun(13));
-  if(son14.length<10){ u.hidden=true; return; }
-  const m={}; son14.forEach(l=>m[l.saat]=(m[l.saat]||0)+1);
-  const sirali = Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,2).map(x=>+x[0]);
-  if(!sirali.includes(simdi)){ u.hidden=true; return; }
-  const adet = m[simdi];
-  const t = enCok(son14.filter(l=>l.saat===simdi).map(l=>l.tetik));
+  const u=$("#riskUyari"),simdi=new Date().getHours();
+  const son14=D.logs.filter(l=>l.gun>=gecmisGun(13));
+  if(son14.length<10){u.hidden=true;return;}
+  const m={};son14.forEach(l=>m[l.saat]=(m[l.saat]||0)+1);
+  const ilk2=Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,2).map(x=>+x[0]);
+  if(!ilk2.includes(simdi)){u.hidden=true;return;}
+  const t=enCok(son14.filter(l=>l.saat===simdi).map(l=>l.tetik));
   u.hidden=false;
-  u.innerHTML = "Riskli saat. Son 14 günde bu saatte <b>"+adet+"</b> kayıt var"+(t?"; en sık tetik "+t[0].toLowerCase():"")+". Kaydetmeden önce ertele düğmesine bas.";
+  u.innerHTML="Riskli saat. Son 14 günde bu saatte <b>"+m[simdi]+"</b> kayıt var"+(t?"; en sık tetik "+t[0].toLowerCase():"")+". Kaydetmeden önce ertele düğmesine bas.";
 }
-
-function davranisCiz(){
-  const d = D.direnc.filter(x=>x.davranis);
-  const e = $("#davranisListe");
-  if(!d.length){ e.innerHTML = `<div class="bos">Henüz erteleme yok. İstek geldiğinde "20 dk ertele" düğmesine bas ve yerine koyacağın davranışı seç.</div>`; return; }
-  const m={};
-  d.forEach(x=>{
-    m[x.davranis] = m[x.davranis] || {t:0,b:0};
-    m[x.davranis].t++;
-    if(x.sonuc!=="dustu") m[x.davranis].b++;
-  });
-  const s = Object.entries(m).sort((a,b)=>(b[1].b/b[1].t)-(a[1].b/a[1].t));
-  e.innerHTML = s.map(([k,v])=>
-    `<div class="satir"><span class="tetik" style="flex:1">${k}</span><b>${v.b}/${v.t}</b><span class="oran">%${Math.round(v.b/v.t*100)}</span></div>`
-  ).join("");
-}
-
-function haftaKirilim(){
-  let ic=[], son=[];
-  for(let i=0;i<28;i++){
-    const g=gecmisGun(i);
-    if(D.baslangic && g<D.baslangic) break;
-    const d=new Date(g).getDay();
-    (d===0||d===6?son:ic).push(sayim(g));
-  }
-  if(ic.length<3||son.length<2) return "";
-  const ort=a=>a.reduce((x,y)=>x+y,0)/a.length;
-  const a=ort(ic), b=ort(son);
-  if(Math.abs(a-b)<0.8) return "";
-  return "<p>Hafta içi ortalama <b>"+a.toFixed(1)+"</b>, hafta sonu <b>"+b.toFixed(1)+"</b>. "+
-    (a>b?"Sorun hafta içinde. Mesai molalarını önceden planla, boş mola en riskli mola.":"Sorun hafta sonunda. Boş zamanı önceden planla, plansız saat en pahalı saatin.")+"</p>";
-}
-
 function hatirlatCiz(){
-  const e=$("#hatirlat"), b=gun(), simdi=new Date();
-  const parcalar=[];
-  const bd = D.ayar && D.ayar.birakma;
-  if(bd){
-    const kalanGun = gunFarki(b, bd);
-    if(kalanGun>0) parcalar.push("Bırakma tarihine <b>"+kalanGun+"</b> gün.");
-    else if(kalanGun===0) parcalar.push("Bırakma tarihi <b>bugün</b>.");
-    else parcalar.push("Bırakma tarihini <b>"+Math.abs(kalanGun)+"</b> gün geçtin.");
+  const e=$("#hatirlat"),b=gun(),simdi=new Date(),p=[];
+  if(D.ayar.birakma){
+    const k=gunFarki(b,D.ayar.birakma);
+    if(k>0)p.push("Bırakma tarihine <b>"+k+"</b> gün.");
+    else if(k===0)p.push("Bırakma tarihi <b>bugün</b>.");
+    else p.push("Bırakma tarihini <b>"+Math.abs(k)+"</b> gün geçtin.");
   }
-  if(simdi.getDay()===0) parcalar.push("Pazar: haftalık değerlendirme Rapor sekmesinde hazır.");
-  else if(simdi.getHours()>=20 && !D.checkins[b]) parcalar.push("Bugünün check-in'i girilmedi. Günlük sekmesi, altı alan.");
-  if(!parcalar.length){ e.hidden=true; return; }
-  e.hidden=false; e.innerHTML = parcalar.map(x=>"<p>"+x+"</p>").join("");
+  if(simdi.getDay()===0)p.push("Pazar: haftalık değerlendirme Rapor sekmesinde hazır.");
+  else if(simdi.getHours()>=20&&!D.checkins[b])p.push("Bugünün check-in'i girilmedi. Günlük sekmesi, altı alan.");
+  const y=D.sonYedek||D.baslangic;
+  if(y&&gunFarki(y,b)>=30)p.push("Son yedekten <b>"+gunFarki(y,b)+"</b> gün geçti. Ayar → Veriyi dışa aktar.");
+  if(!p.length){e.hidden=true;return;}
+  e.hidden=false;e.innerHTML=p.map(x=>"<p>"+x+"</p>").join("");
 }
-
-function gunlukYorum(n,hedef,dun,log){
+/* ---------- yorumlar ---------- */
+function gunlukYorum(n,hedef,log){
   const p=[];
-  if(hedef==null) p.push("<p>Sınır girilmemiş. Ayar sekmesinden bugünün üst sınırını yaz — sınırsız sayaç sadece kayıt tutar, ilerletmez.</p>");
-  else if(n>hedef) p.push("<p>Sınırı "+(n-hedef)+" adet aştın. Bu bir sapma değil, sınırın gerçekçi olmadığının ya da tetiğe hazırlıksız yakalandığının verisi.</p>");
-  else if(n===0 && hedef===0) p.push("<p>Sıfır. Tek cümle: iyi iş.</p>");
+  if(hedef==null)p.push("<p>Sınır girilmemiş. Ayar sekmesinden bugünün üst sınırını yaz — sınırsız sayaç sadece kayıt tutar, ilerletmez.</p>");
+  else if(n>hedef)p.push("<p>Sınırı "+(n-hedef)+" adet aştın. Bu bir sapma değil, sınırın gerçekçi olmadığının ya da tetiğe hazırlıksız yakalandığının verisi.</p>");
+  else if(n===0&&hedef===0)p.push("<p>Sıfır. Tek cümle: iyi iş.</p>");
   else p.push("<p>Sınırın altındasın. Kalan hak <b>"+(hedef-n)+"</b>. Bunu harcaman gerekmiyor.</p>");
-
   if(log.length>=2){
-    const sonIki = (log[0].ts - log[1].ts)/60000;
-    if(sonIki<30) p.push("<p>Son iki kayıt arası "+Math.round(sonIki)+" dakika. Aralık daralıyor — bir sonraki isteği kaydetmeden 20 dk ertele.</p>");
+    const f=(log[0].ts-log[1].ts)/60000;
+    if(f<30)p.push("<p>Son iki kayıt arası "+Math.round(f)+" dakika. Aralık daralıyor — bir sonraki isteği kaydetmeden 20 dk ertele.</p>");
   }
-  const t = enCok(D.logs.filter(l=>l.gun>=gecmisGun(6)).map(l=>l.tetik));
-  const s = enCok(D.logs.filter(l=>l.gun>=gecmisGun(6)).map(l=>String(l.saat).padStart(2,"0")+":00"));
-  if(t) p.push('<p class="odak">Yarın tek odak: en sık tetiğin <b>'+t[0].toLowerCase()+"</b>"+(s?", saat "+s[0]+" civarı":"")+". Yedek davranışını şimdi seç: su, 5 dk yürüyüş veya sakız.</p>");
+  const dusuk=log.filter(l=>l.istek&&l.istek<=2).length;
+  if(dusuk>=2)p.push("<p>Bugünkü kayıtların <b>"+dusuk+"</b> tanesinde istek puanı 2 veya altı. Bunlar otomatik pilot; en kolay düşecek olanlar da bunlar.</p>");
+  const t=enCok(D.logs.filter(l=>l.gun>=gecmisGun(6)).map(l=>l.tetik));
+  const s=enCok(D.logs.filter(l=>l.gun>=gecmisGun(6)).map(l=>String(l.saat).padStart(2,"0")+":00"));
+  if(t)p.push('<p class="odak">Yarın tek odak: en sık tetiğin <b>'+t[0].toLowerCase()+"</b>"+(s?", saat "+s[0]+" civarı":"")+". Yedek davranışını şimdi seç: su, 5 dk yürüyüş veya sakız.</p>");
   return p.join("");
 }
-
-function enCok(arr){
-  if(!arr.length) return null;
-  const m={}; arr.forEach(x=>m[x]=(m[x]||0)+1);
-  return Object.entries(m).sort((a,b)=>b[1]-a[1])[0];
-}
-
-function cizRapor(){
-  kasaCiz();
-  davranisCiz();
-  const gunler=[]; for(let i=6;i>=0;i--) gunler.push(gecmisGun(i));
-  const say = gunler.map(sayim);
-  const max = Math.max(...say,1);
-  $("#grafik").innerHTML = gunler.map((g,i)=>{
-    const h = Math.round(say[i]/max*100);
-    const kls = i===6?"dolgu bugun":(say[i]===0?"dolgu yok":"dolgu");
-    const ad = new Date(g).toLocaleDateString("tr-TR",{weekday:"short"});
-    return `<div class="sut"><span class="adet">${say[i]}</span><div class="${kls}" style="height:${Math.max(h,3)}%"></div><small>${ad}</small></div>`;
-  }).join("");
-
-  const buHafta = say.reduce((a,b)=>a+b,0);
-  let oncekiT=0; for(let i=13;i>=7;i--) oncekiT += sayim(gecmisGun(i));
-  const fark = oncekiT ? Math.round((buHafta-oncekiT)/oncekiT*100) : null;
-  const sifirGun = say.filter(x=>x===0).length;
-  $("#olcu").innerHTML =
-    "<span>7 gün toplam <b>"+buHafta+"</b></span>"+
-    "<span>günlük ortalama <b>"+(buHafta/7).toFixed(1)+"</b></span>"+
-    "<span>sıfır gün <b>"+sifirGun+"</b></span>"+
-    (fark!==null?"<span>önceki hafta <b>"+(fark>0?"+%":"-%")+Math.abs(fark)+"</b></span>":"");
-
-  const son7 = D.logs.filter(l=>l.gun>=gecmisGun(6));
-  const saatM={}; son7.forEach(l=>{const k=String(l.saat).padStart(2,"0")+":00"; saatM[k]=(saatM[k]||0)+1;});
-  const saatS = Object.entries(saatM).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  const saatMax = saatS.length ? saatS[0][1] : 1;
-  $("#saatListe").innerHTML = saatS.length ? saatS.map(([k,v])=>
-    `<div class="satir"><span class="saat">${k}</span><span class="tetik"><i class="mini" style="width:${Math.round(v/saatMax*100)}%"></i></span><b>${v}</b></div>`).join("")
-    : `<div class="bos">Yeterli kayıt yok.</div>`;
-
-  const tetikM={}; son7.forEach(l=>tetikM[l.tetik]=(tetikM[l.tetik]||0)+1);
-  const tetikS = Object.entries(tetikM).sort((a,b)=>b[1]-a[1]);
-  $("#tetikListe").innerHTML = tetikS.length ? tetikS.map(([k,v])=>
-    `<div class="satir"><span class="tetik" style="flex:1">${k}</span><b>${v}</b></div>`).join("")
-    : `<div class="bos">Yeterli kayıt yok.</div>`;
-
-  const bugunPazar = new Date().getDay()===0;
-  let h = "";
-  if(bugunPazar) h += "<p>Pazar. Haftanın kapanış rakamı: <b>"+buHafta+"</b>, ortalama <b>"+(buHafta/7).toFixed(1)+"</b>.</p>";
-  if(fark!==null && fark>0) h += "<p>Geçen haftaya göre %"+fark+" arttın. Hedefi değil sistemi değiştir: en yoğun saatini boş bırakma, o saate önceden bir iş koy.</p>";
-  else if(fark!==null && fark<0) h += "<p>Geçen haftaya göre %"+Math.abs(fark)+" düştün. Gelecek hafta ölçülebilir tek hedef: günlük ortalamayı <b>"+Math.max(0,Math.floor(buHafta/7)-1)+"</b> yap.</p>";
-  else h += "<p>Karşılaştırma için en az iki haftalık kayıt gerekiyor. Şimdilik tek iş: her sigarayı anında işaretle.</p>";
-  h += haftaKirilim();
-  h += baglanti("stres", c=>c.stres>=7, "stresli", "sakin");
-  h += baglanti("uyku", c=>c.uyku<6, "az uyuduğun", "dinlenmiş");
-  const dirençTop = D.direnc.filter(x=>x.gun>=gecmisGun(6) && x.sonuc!=="dustu").length;
-  const nuks = D.logs.filter(l=>l.gun>=gecmisGun(13) && l.plan && l.plan!=="—");
-  if(nuks.length){
-    const sonNuks = nuks[nuks.length-1];
-    h += "<p>Sınır aşımlarında en sık his: <b>"+enCok(nuks.map(x=>x.his))[0]+"</b>. Kendi yazdığın son plan: "+sonNuks.plan+". Uygula, yenisini arama.</p>";
-  }
-  h += "<p>Bu hafta erteleyip vazgeçtiğin istek sayısı: <b>"+dirençTop+"</b>. Bu sayı arttıkça diğeri düşer.</p>";
-  $("#raporKoc").innerHTML = h;
-}
-
-function baglanti(ad, kosul, etiketA, etiketB){
+function baglanti(ad,kosul,eA,eB){
   const A=[],B=[];
-  Object.entries(D.checkins).forEach(([g,c])=>{
-    if(c[ad]===undefined) return;
-    (kosul(c)?A:B).push(sayim(g));
-  });
-  if(A.length<2||B.length<2) return "";
+  Object.entries(D.checkins).forEach(([g,c])=>{if(c[ad]===undefined)return;(kosul(c)?A:B).push(sayim(g));});
+  if(A.length<2||B.length<2)return "";
   const ort=a=>a.reduce((x,y)=>x+y,0)/a.length;
-  const a=ort(A), b=ort(B);
-  if(Math.abs(a-b)<0.8) return "";
-  return "<p>"+etiketA+" günlerde ortalama <b>"+a.toFixed(1)+"</b>, "+etiketB+" günlerde <b>"+b.toFixed(1)+"</b>. "+
-    (a>b?"Bu bir tesadüf değil, tetik. Bu günler için önceden plan yap.":"Bu tarafta rakam daha iyi; aynı düzeni koru.")+"</p>";
+  const a=ort(A),b=ort(B);
+  if(Math.abs(a-b)<0.8)return "";
+  return "<p>"+eA+" günlerde ortalama <b>"+a.toFixed(1)+"</b>, "+eB+" günlerde <b>"+b.toFixed(1)+"</b>. "+(a>b?"Bu bir tesadüf değil, tetik. Bu günler için önceden plan yap.":"Bu tarafta rakam daha iyi; aynı düzeni koru.")+"</p>";
+}
+function haftaKirilim(){
+  let ic=[],son=[];
+  for(let i=0;i<28;i++){
+    const g=gecmisGun(i);if(D.baslangic&&g<D.baslangic)break;
+    const d=new Date(g).getDay();(d===0||d===6?son:ic).push(sayim(g));
+  }
+  if(ic.length<3||son.length<2)return "";
+  const ort=a=>a.reduce((x,y)=>x+y,0)/a.length;
+  const a=ort(ic),b=ort(son);
+  if(Math.abs(a-b)<0.8)return "";
+  return "<p>Hafta içi ortalama <b>"+a.toFixed(1)+"</b>, hafta sonu <b>"+b.toFixed(1)+"</b>. "+(a>b?"Sorun hafta içinde. Mesai molalarını önceden planla, boş mola en riskli moladır.":"Sorun hafta sonunda. Boş zamanı önceden planla, plansız saat en pahalı saatin.")+"</p>";
 }
 
+/* ---------- rapor ---------- */
+function kasaCiz(){
+  const bf=birimFiyat(),k=$("#kasa");
+  if(!bf){k.innerHTML='<div class="bos">Paket fiyatı girilmemiş. Ayar sekmesinden fiyatı ve pakette kaç adet olduğunu gir. Rakama dönüşmeyen harcama soyut kalır.</div>';$("#tasarrufHedef").innerHTML="";return;}
+  const b=gun();let son30=0,gs=0;
+  for(let i=0;i<30;i++){const g=gecmisGun(i);if(D.baslangic&&g<D.baslangic)break;son30+=sayim(g)*bf;gs++;}
+  const ort=gs?son30/gs:0;
+  let tasarruf=0;
+  if(D.ayar.taban!=null){
+    for(let i=0;i<400;i++){const g=gecmisGun(i);if(D.baslangic&&g<D.baslangic)break;const f=D.ayar.taban-sayim(g);if(f>0)tasarruf+=f*bf;}
+  }
+  let h="";
+  h+='<div class="satir"><span class="tetik" style="flex:1">Bugün</span><b>'+tl(sayim(b)*bf)+'</b></div>';
+  h+='<div class="satir"><span class="tetik" style="flex:1">Son 30 gün</span><b>'+tl(son30)+'</b></div>';
+  h+='<div class="satir"><span class="tetik" style="flex:1">Bu hızla yıllık</span><b>'+tl(ort*365)+'</b></div>';
+  if(D.ayar.taban!=null)h+='<div class="satir kasa-vurgu"><span class="tetik" style="flex:1">İçmediklerinden biriken</span><b>'+tl(tasarruf)+'</b></div>';
+  h+='<div class="satir"><span class="tetik" style="flex:1">Toplam kayıt ve harcanan süre</span><b>'+D.logs.length+' · '+Math.floor(D.logs.length*5/60)+' sa</b></div>';
+  k.innerHTML=h;
+  const th=$("#tasarrufHedef");
+  if(D.ayar.thAd&&D.ayar.thTutar){
+    const o=Math.min(100,Math.round(tasarruf/D.ayar.thTutar*100));
+    th.innerHTML='<div class="seri" style="border-color:var(--murekkep)"><div class="seri-ust"><span>'+D.ayar.thAd+'</span><b style="color:var(--murekkep)">%'+o+'</b></div><div class="cubuk koyu"><i style="width:'+o+'%"></i></div><p class="not" style="margin-top:10px">'+tl(tasarruf)+" / "+tl(D.ayar.thTutar)+(o<100?". Kalan "+tl(D.ayar.thTutar-tasarruf)+".":". Hedef tamam.")+'</p></div>';
+  }else th.innerHTML="";
+}
+function kotaCiz(){
+  const hb=haftaBasi(),e=$("#kota");
+  let kota=0,kullanilan=0,eksikSinir=false;
+  for(let i=0;i<7;i++){
+    const d=new Date(hb);d.setDate(d.getDate()+i);const g=gun(d);
+    const h=hedefAl(g);
+    if(h==null)eksikSinir=true;else kota+=h;
+    if(g<=gun())kullanilan+=sayim(g);
+  }
+  if(eksikSinir){e.innerHTML='<div class="bos">Haftalık kota için günlük sınır gerekiyor. Ayar sekmesinden azalan planı başlat.</div>';return;}
+  const kalanHak=kota-kullanilan;
+  const o=kota?Math.min(100,Math.round(kullanilan/kota*100)):0;
+  e.innerHTML='<div class="seri" style="border-color:'+(kalanHak<0?"var(--damga)":"var(--murekkep)")+'"><div class="seri-ust"><span>'+hb+" haftası</span><b style=\"color:"+(kalanHak<0?"var(--damga)":"var(--murekkep)")+'">'+kullanilan+" / "+kota+'</b></div><div class="cubuk koyu"><i style="width:'+o+'%"></i></div><p class="not" style="margin-top:10px">'+(kalanHak>=0?"Bu hafta kalan hakkın <b>"+kalanHak+"</b>. Gün değil hafta kapanır; bugün fazla içersen yarının hakkı azalır.":"Haftalık kotayı <b>"+Math.abs(kalanHak)+"</b> adet aştın. Kalan günleri sıfırla kapatmadan hafta düzelmez.")+"</p></div>";
+}
+function haritaCiz(){
+  const e=$("#harita"),bugun=new Date();
+  const bas=new Date();bas.setDate(bas.getDate()-363);
+  const kaydir=(bas.getDay()+6)%7;bas.setDate(bas.getDate()-kaydir);
+  let h="";
+  for(let d=new Date(bas);d<=bugun;d.setDate(d.getDate()+1)){
+    const g=gun(d);
+    if(D.baslangic&&g<D.baslangic){h+='<i title="'+g+'"></i>';continue;}
+    const n=sayim(g);
+    let k="";
+    if(n===0)k="sifir";else if(n<=2)k="s1";else if(n<=5)k="s2";else if(n<=9)k="s3";else k="s4";
+    h+='<i class="'+k+'" title="'+g+": "+n+'"></i>';
+  }
+  e.innerHTML=h;
+}
+function rekorCiz(){
+  const l=D.logs.slice().sort((a,b)=>a.ts-b.ts);
+  let enUzun=0;
+  for(let i=1;i<l.length;i++)enUzun=Math.max(enUzun,(l[i].ts-l[i-1].ts)/60000);
+  let seri=0,enSeri=0;
+  for(let i=364;i>=0;i--){
+    const g=gecmisGun(i);
+    if(D.baslangic&&g<D.baslangic)continue;
+    if(sayim(g)===0){seri++;enSeri=Math.max(enSeri,seri);}else seri=0;
+  }
+  let enIyiHafta=null;
+  for(let w=1;w<=52;w++){
+    const bas=new Date();bas.setDate(bas.getDate()-((w-1)*7)-6);
+    let t=0,tam=true;
+    for(let i=0;i<7;i++){const d=new Date(bas);d.setDate(d.getDate()+i);const g=gun(d);if(D.baslangic&&g<D.baslangic){tam=false;break;}t+=sayim(g);}
+    if(tam&&(enIyiHafta===null||t<enIyiHafta))enIyiHafta=t;
+  }
+  let toplamGun=0;for(let i=0;i<400;i++){const g=gecmisGun(i);if(D.baslangic&&g<D.baslangic)break;toplamGun++;}
+  const ck=Object.keys(D.checkins).length;
+  const disiplin=toplamGun?Math.round(ck/toplamGun*100):0;
+  $("#rekorlar").innerHTML=
+    '<div class="satir"><span class="tetik" style="flex:1">En uzun sigarasız aralık</span><b>'+(enUzun?Math.floor(enUzun/60)+" sa "+Math.round(enUzun%60)+" dk":"—")+'</b></div>'+
+    '<div class="satir"><span class="tetik" style="flex:1">En uzun sıfır serisi</span><b>'+enSeri+' gün</b></div>'+
+    '<div class="satir"><span class="tetik" style="flex:1">En iyi hafta</span><b>'+(enIyiHafta!==null?enIyiHafta:"—")+'</b></div>'+
+    '<div class="satir"><span class="tetik" style="flex:1">Kayıt disiplini (check-in)</span><b>%'+disiplin+'</b></div>';
+}
+function tabloCiz(hedefId,veri,bosMetin){
+  const e=$(hedefId);
+  const s=Object.entries(veri).sort((a,b)=>b[1]-a[1]);
+  e.innerHTML=s.length?s.map(([k,v])=>'<div class="satir"><span class="tetik" style="flex:1">'+k+'</span><b>'+v+'</b></div>').join(""):'<div class="bos">'+bosMetin+'</div>';
+}
+function aktifDeney(){const hb=haftaBasi();return(D.deney||[]).find(x=>x.hafta===hb)||null;}
+function deneyCiz(){
+  const e=$("#deneyKutu"),hb=haftaBasi(),d=aktifDeney();
+  if(!d){e.innerHTML='<div class="bos">Bu hafta için hipotez yok. Ayar sekmesinden tek cümlelik bir deney yaz — rastgele denemek yerine sistematik test et.</div>';return;}
+  let bu=0,onceki=0;
+  for(let i=0;i<7;i++){const x=new Date(hb);x.setDate(x.getDate()+i);bu+=sayim(gun(x));}
+  const ohb=new Date(hb);ohb.setDate(ohb.getDate()-7);
+  for(let i=0;i<7;i++){const x=new Date(ohb);x.setDate(x.getDate()+i);onceki+=sayim(gun(x));}
+  const pazar=new Date().getDay()===0;
+  let sonuc="";
+  if(pazar||gunFarki(hb,gun())>=6){
+    if(!onceki)sonuc="Karşılaştıracak önceki hafta yok.";
+    else if(bu<onceki)sonuc="<b>Doğrulandı.</b> Bu hafta "+bu+", önceki hafta "+onceki+". Hipotezi sürdür.";
+    else if(bu>onceki)sonuc="<b>Doğrulanmadı.</b> Bu hafta "+bu+", önceki hafta "+onceki+". Hipotezi değil yöntemi değiştir.";
+    else sonuc="<b>Fark yok.</b> İki hafta da "+bu+". Bu değişken sende işlemiyor, başkasını dene.";
+  }else sonuc="Hafta sürüyor. Şu ana kadar "+bu+", önceki hafta toplam "+onceki+".";
+  e.innerHTML='<div class="koc" style="margin-top:0"><p><b>Hipotez:</b> '+d.hipotez+'</p><p>'+sonuc+'</p></div>';
+}
+function cizRapor(){
+  kasaCiz();kotaCiz();haritaCiz();rekorCiz();deneyCiz();davranisCiz();
+  const gunler=[];for(let i=6;i>=0;i--)gunler.push(gecmisGun(i));
+  const say=gunler.map(sayim),max=Math.max(...say,1);
+  $("#grafik").innerHTML=gunler.map((g,i)=>{
+    const kls=i===6?"dolgu bugun":(say[i]===0?"dolgu yok":"dolgu");
+    return '<div class="sut"><span class="adet">'+say[i]+'</span><div class="'+kls+'" style="height:'+Math.max(Math.round(say[i]/max*100),3)+'%"></div><small>'+new Date(g).toLocaleDateString("tr-TR",{weekday:"short"})+'</small></div>';
+  }).join("");
+  const buHafta=say.reduce((a,b)=>a+b,0);
+  let onceki=0;for(let i=13;i>=7;i--)onceki+=sayim(gecmisGun(i));
+  const fark=onceki?Math.round((buHafta-onceki)/onceki*100):null;
+  $("#olcu").innerHTML="<span>7 gün toplam <b>"+buHafta+"</b></span><span>günlük ortalama <b>"+(buHafta/7).toFixed(1)+"</b></span><span>sıfır gün <b>"+say.filter(x=>x===0).length+"</b></span>"+(fark!==null?"<span>önceki haftaya göre <b>%"+Math.abs(fark)+" "+(fark>0?"artış":"düşüş")+"</b></span>":"");
+
+  const son7=D.logs.filter(l=>l.gun>=gecmisGun(6));
+  const saatM={};son7.forEach(l=>{const k=String(l.saat).padStart(2,"0")+":00";saatM[k]=(saatM[k]||0)+1;});
+  const saatS=Object.entries(saatM).sort((a,b)=>b[1]-a[1]).slice(0,5),sMax=saatS.length?saatS[0][1]:1;
+  $("#saatListe").innerHTML=saatS.length?saatS.map(([k,v])=>'<div class="satir"><span class="saat">'+k+'</span><span class="tetik"><i class="mini" style="width:'+Math.round(v/sMax*100)+'%"></i></span><b>'+v+'</b></div>').join(""):'<div class="bos">Yeterli kayıt yok.</div>';
+
+  const tM={},bM={},bhM={};
+  son7.forEach(l=>{tM[l.tetik]=(tM[l.tetik]||0)+1;});
+  D.logs.filter(l=>l.gun>=gecmisGun(27)).forEach(l=>{
+    if(l.yer||l.sosyal){const k=[l.yer,l.sosyal].filter(Boolean).join(" · ");bM[k]=(bM[k]||0)+1;}
+    if(l.bahane&&l.bahane!=="belirtilmedi")bhM[l.bahane]=(bhM[l.bahane]||0)+1;
+  });
+  tabloCiz("#tetikListe",tM,"Yeterli kayıt yok.");
+  tabloCiz("#baglamListe",bM,"Kayıt sırasında yer ve ortam seçmedin. Bir sonraki kayıtta işaretle.");
+  tabloCiz("#bahaneListe",bhM,"Henüz bahane kaydı yok. Sınırı aştığında sorulur.");
+
+  let h="";
+  if(new Date().getDay()===0)h+="<p>Pazar. Haftanın kapanış rakamı: <b>"+buHafta+"</b>, ortalama <b>"+(buHafta/7).toFixed(1)+"</b>.</p>";
+  if(fark!==null&&fark>0)h+="<p>Geçen haftaya göre %"+fark+" arttın. Hedefi değil sistemi değiştir: en yoğun saatini boş bırakma, o saate önceden bir iş koy.</p>";
+  else if(fark!==null&&fark<0)h+="<p>Geçen haftaya göre %"+Math.abs(fark)+" düştün. Gelecek hafta ölçülebilir tek hedef: günlük ortalamayı <b>"+Math.max(0,Math.floor(buHafta/7)-1)+"</b> yap.</p>";
+  else h+="<p>Karşılaştırma için en az iki haftalık kayıt gerekiyor. Şimdilik tek iş: her sigarayı anında işaretle.</p>";
+  h+=haftaKirilim();
+  h+=baglanti("stres",c=>c.stres>=7,"stresli","sakin");
+  h+=baglanti("uyku",c=>c.uyku<6,"az uyuduğun","dinlenmiş");
+  const bh=enCok(D.logs.filter(l=>l.gun>=gecmisGun(27)).map(l=>l.bahane&&l.bahane!=="belirtilmedi"?l.bahane:null).filter(Boolean));
+  if(bh&&bh[1]>=2)h+="<p>En sık kullandığın bahane: <b>"+bh[0]+"</b> ("+bh[1]+" kez). Bu bir gerekçe değil, tekrar eden bir cümle.</p>";
+  const nuks=D.logs.filter(l=>l.gun>=gecmisGun(13)&&l.plan&&l.plan!=="—");
+  if(nuks.length)h+="<p>Sınır aşımlarında en sık his: <b>"+(enCok(nuks.map(x=>x.his))||["belirtilmedi"])[0]+"</b>. Kendi yazdığın son plan: "+nuks[nuks.length-1].plan+". Uygula, yenisini arama.</p>";
+  const dt=D.direnc.filter(x=>x.gun>=gecmisGun(6)&&x.sonuc!=="dustu").length;
+  h+="<p>Bu hafta erteleyip vazgeçtiğin istek sayısı: <b>"+dt+"</b>. Bu sayı arttıkça diğeri düşer.</p>";
+  $("#raporKoc").innerHTML=h;
+}
+function davranisCiz(){
+  const d=D.direnc.filter(x=>x.davranis),e=$("#davranisListe");
+  if(!d.length){e.innerHTML='<div class="bos">Henüz erteleme yok. İstek geldiğinde "20 dk ertele" düğmesine bas ve yerine koyacağın davranışı seç.</div>';return;}
+  const m={};
+  d.forEach(x=>{m[x.davranis]=m[x.davranis]||{t:0,b:0};m[x.davranis].t++;if(x.sonuc!=="dustu")m[x.davranis].b++;});
+  e.innerHTML=Object.entries(m).sort((a,b)=>(b[1].b/b[1].t)-(a[1].b/a[1].t)).map(([k,v])=>'<div class="satir"><span class="tetik" style="flex:1">'+k+'</span><b>'+v.b+"/"+v.t+'</b><span class="oran">%'+Math.round(v.b/v.t*100)+'</span></div>').join("");
+}
 function gecmisCiz(){
-  const gunler = [...new Set(D.logs.map(l=>l.gun))].sort().reverse().slice(0,30);
-  $("#gecmis").innerHTML = gunler.length ? gunler.map(g=>
-    `<div class="satir"><span class="saat" style="width:88px">${g.slice(5)}</span><span class="tetik">${D.checkins[g]?"günlük var":"günlük yok"}</span><b>${sayim(g)}</b></div>`
-  ).join("") : `<div class="bos">Kayıt yok.</div>`;
+  const g=[...new Set(D.logs.map(l=>l.gun))].sort().reverse().slice(0,30);
+  $("#gecmis").innerHTML=g.length?g.map(x=>'<div class="satir"><span class="saat" style="width:88px">'+x.slice(5)+'</span><span class="tetik">'+(D.checkins[x]?"günlük var":"günlük yok")+'</span><b>'+sayim(x)+'</b></div>').join(""):'<div class="bos">Kayıt yok.</div>';
 }
-
-/* --- günlük --- */
-$("#btnGunluk").onclick = async ()=>{
-  const v = ["f1","f2","f3","f4","f5","f6"].map(i=>$("#"+i).value.trim());
-  if(v.some(x=>x==="")){ $("#gunlukHata").textContent="Boş alan var. Sıfırsa 0 yaz — atlama."; return; }
+/* ---------- günlük ---------- */
+$("#btnGunluk").onclick=async()=>{
+  const v=["f1","f2","f3","f4","f5","f6"].map(i=>$("#"+i).value.trim());
+  if(v.some(x=>x==="")){$("#gunlukHata").textContent="Boş alan var. Sıfırsa 0 yaz — atlama.";return;}
   $("#gunlukHata").textContent="";
-  const b=gun();
-  const c={uyku:+v[0],stres:+v[1],enerji:+v[2],hareket:+v[3],kahve:+v[4],alkol:v[5]};
-  D.checkins[b]=c;
-  await kaydet();
-  const n=sayim(b), tuttu=[], dustu=[];
+  const b=gun(),c={uyku:+v[0],stres:+v[1],enerji:+v[2],hareket:+v[3],kahve:+v[4],alkol:v[5]};
+  D.checkins[b]=c;await kaydet();
+  const n=sayim(b),tuttu=[],dustu=[];
   (c.uyku>=7?tuttu:dustu).push("uyku "+c.uyku+" sa");
   (c.hareket>=20?tuttu:dustu).push("hareket "+c.hareket+" dk");
   (c.stres<=5?tuttu:dustu).push("stres "+c.stres);
   let odak;
-  if(c.uyku<6) odak="Uyku "+c.uyku+" saat. Yarın yük azaltılıyor: hedefi sıkma, sadece bu geceyi 7 saate çıkar.";
-  else if(c.stres>=7) odak="Stres "+c.stres+". Yarın en yoğun saatinde 5 dk yürüyüş — sigarayı ertelemek değil, o boşluğu doldurmak.";
-  else if(c.kahve>=4) odak="Kahve "+c.kahve+" fincan. Yarın üçe indir; kahve senin en sık tetiklerinden biri.";
-  else if(c.hareket<20) odak="Hareket. Yarın 25 dk, hava kötüyse ev antrenmanı.";
-  else if(n>0) odak="Günün ilk isteğini 20 dk ertele. Sabahki tek sigara günün geri kalanının eşiğini belirliyor.";
+  if(c.uyku<6)odak="Uyku "+c.uyku+" saat. Yarın yük azaltılıyor: hedefi sıkma, sadece bu geceyi 7 saate çıkar.";
+  else if(c.stres>=7)odak="Stres "+c.stres+". Yarın en yoğun saatinde 5 dk yürüyüş — sigarayı ertelemek değil, o boşluğu doldurmak.";
+  else if(c.kahve>=4)odak="Kahve "+c.kahve+" fincan. Yarın üçe indir; kahve senin en sık tetiklerinden biri.";
+  else if(c.hareket<20)odak="Hareket. Yarın 25 dk, hava kötüyse ev antrenmanı.";
+  else if(n>0)odak="Günün ilk isteğini 20 dk ertele. Sabahki tek sigara günün geri kalanının eşiğini belirliyor.";
   else odak="Aynı düzeni tekrar et, değişken ekleme.";
   $("#gunlukKoc").hidden=false;
-  $("#gunlukKoc").innerHTML =
-    "<p>Ne tuttu: "+(tuttu.join(", ")||"hiçbiri")+".</p>"+
-    "<p>Ne düştü: "+(dustu.join(", ")||"hiçbiri")+". Sigara "+n+".</p>"+
-    '<p class="odak">Yarın tek odak: '+odak+"</p>";
+  $("#gunlukKoc").innerHTML="<p>Ne tuttu: "+(tuttu.join(", ")||"hiçbiri")+".</p><p>Ne düştü: "+(dustu.join(", ")||"hiçbiri")+". Sigara "+n+'.</p><p class="odak">Yarın tek odak: '+odak+"</p>";
   ciz();
 };
 
-/* --- koç yorumu (Claude) --- */
-$("#btnKoc").onclick = async ()=>{
-  const btn=$("#btnKoc"); btn.disabled=true; btn.textContent="Yorum hazırlanıyor…";
-  const gunler=[]; for(let i=6;i>=0;i--){ const g=gecmisGun(i); gunler.push({gun:g, adet:sayim(g), checkin:D.checkins[g]||null}); }
-  const tetikler = D.logs.filter(l=>l.gun>=gecmisGun(6)).map(l=>({saat:l.saat, tetik:l.tetik}));
-  const istem = `Sen bir yaşam koçusun. Kurallar: Türkçe yaz. Kısa, net, doğrudan. Uzun girizgâh, motivasyon nutku, emoji yok. Övgü sadece somut bir iş bitmişse ve tek cümle. Karaktere saldırma, utandırma yok; sadece davranışı eleştir. Bahaneyi bahane olarak adlandır. En fazla 6 cümle. Son cümle mutlaka yarın için tek somut adım olsun ve saat içersin.
-Veri (son 7 gün): ${JSON.stringify(gunler)}
-Tetik kayıtları: ${JSON.stringify(tetikler)}
-Ertelenip vazgeçilen istek sayısı: ${D.direnc.filter(x=>x.gun>=gecmisGun(6)).length}`;
+/* ---------- ayar ---------- */
+async function ayarYaz(k,v){D.ayar=Object.assign({},D.ayar,{[k]:v});await kaydet();ciz();}
+function onay(id,metin){const b=$(id),e=b.textContent;b.textContent=metin;setTimeout(()=>b.textContent=e,1300);}
+$("#btnHedef").onclick=async()=>{const v=$("#hedef").value;if(v==="")return;D.hedefler[gun()]=Math.max(0,+v);await kaydet();ciz();onay("#btnHedef","Kaydedildi");};
+$("#btnPlan").onclick=async()=>{const v=$("#planSinir").value;if(v==="")return;D.plan={sinir:Math.max(0,+v),gun:gun()};await kaydet();ciz();onay("#btnPlan","Başlatıldı");};
+$("#btnAralik").onclick=async()=>{const v=$("#aralik").value;if(v==="")return;await ayarYaz("aralik",Math.max(0,+v));onay("#btnAralik","Kaydedildi");};
+$("#btnBirakma").onclick=async()=>{const v=$("#birakma").value;if(!v)return;await ayarYaz("birakma",v);onay("#btnBirakma","Kaydedildi");};
+$("#btnPara").onclick=async()=>{
+  D.ayar=Object.assign({},D.ayar,{
+    fiyat:$("#fiyat").value===""?null:+$("#fiyat").value,
+    paket:$("#adet").value===""?20:+$("#adet").value,
+    taban:$("#taban").value===""?null:+$("#taban").value});
+  await kaydet();ciz();onay("#btnPara","Kaydedildi");
+};
+$("#btnTh").onclick=async()=>{
+  D.ayar=Object.assign({},D.ayar,{thAd:$("#thAd").value.trim()||null,thTutar:$("#thTutar").value===""?null:+$("#thTutar").value});
+  await kaydet();ciz();onay("#btnTh","Kaydedildi");
+};
+$("#btnDeney").onclick=async()=>{
+  const t=$("#deneyMetin").value.trim();if(!t)return;
+  const hb=haftaBasi();D.deney=D.deney||[];
+  const v=D.deney.find(x=>x.hafta===hb);
+  if(v)v.hipotez=t;else D.deney.push({hafta:hb,hipotez:t});
+  await kaydet();ciz();onay("#btnDeney","Başlatıldı");
+};
+$("#btnSifirla").onclick=async()=>{
+  if(!confirm("Tüm kayıtlar silinecek. Devam?"))return;
+  D=JSON.parse(JSON.stringify(bosVeri));D.baslangic=gun();
+  await kaydet();ciz();
+};
+$("#btnKopya").onclick=async()=>{
+  $("#aktar").value=JSON.stringify(D);$("#aktar").select();
+  D.sonYedek=gun();await kaydet();ciz();
+  onay("#btnKopya","Hazır, kopyala");
+};
+$("#btnYukle").onclick=async()=>{
+  const t=$("#aktar").value.trim();if(!t)return;
   try{
-    const res = await fetch("https://api.anthropic.com/v1/messages",{
-      method:"POST", headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:istem}]})
-    });
-    const data = await res.json();
-    const metin = data.content.filter(x=>x.type==="text").map(x=>x.text).join("\n").trim();
-    $("#raporKoc").innerHTML = metin.split("\n").filter(Boolean).map(l=>"<p>"+l+"</p>").join("");
-  }catch(e){
-    $("#raporKoc").innerHTML += "<p>Yorum alınamadı. Bağlantıyı kontrol et; rakamlar yukarıda duruyor, karar için yeterli.</p>";
-  }
-  btn.disabled=false; btn.textContent="Koçtan yorum iste";
+    const y=JSON.parse(t);if(!Array.isArray(y.logs))throw 0;
+    D=Object.assign(JSON.parse(JSON.stringify(bosVeri)),y);D.ayar=Object.assign({},bosVeri.ayar,y.ayar||{});
+    await kaydet();ciz();onay("#btnYukle","İçe aktarıldı");
+  }catch(e){alert("Metin okunamadı. Tamamını yapıştırdığından emin ol.");}
 };
-
-/* --- ayar --- */
-$("#btnHedef").onclick = async ()=>{
-  const v=$("#hedef").value;
-  if(v==="") return;
-  D.hedefler[gun()] = Math.max(0,+v);
-  await kaydet(); ciz();
-  $("#btnHedef").textContent="Kaydedildi"; setTimeout(()=>$("#btnHedef").textContent="Hedefi kaydet",1200);
-};
-$("#btnSifirla").onclick = async ()=>{
-  if(!confirm("Tüm kayıtlar silinecek. Devam?")) return;
-  D = JSON.parse(JSON.stringify(bosVeri)); D.baslangic=gun();
-  await kaydet(); ciz();
-};
-
-$("#btnPlan").onclick = async ()=>{
-  const v=$("#planSinir").value;
-  if(v==="") return;
-  D.plan = {sinir:Math.max(0,+v), gun:gun()};
-  await kaydet(); ciz();
-};
-$("#btnBirakma").onclick = async ()=>{
-  const v=$("#birakma").value;
-  if(!v) return;
-  D.ayar = Object.assign({fiyat:null,paket:20,taban:null}, D.ayar||{}, {birakma:v});
-  await kaydet(); ciz();
-  $("#btnBirakma").textContent="Kaydedildi"; setTimeout(()=>$("#btnBirakma").textContent="Tarihi kaydet",1200);
-};
-$("#btnPara").onclick = async ()=>{
-  D.ayar = {
-    fiyat: $("#fiyat").value===""?null:+$("#fiyat").value,
-    paket: $("#adet").value===""?20:+$("#adet").value,
-    taban: $("#taban").value===""?null:+$("#taban").value,
-    birakma: (D.ayar&&D.ayar.birakma)||null
-  };
-  await kaydet(); ciz();
-  $("#btnPara").textContent="Kaydedildi"; setTimeout(()=>$("#btnPara").textContent="Kaydet",1200);
-};
-$("#btnCsv").onclick = ()=>{
-  const bf = birimFiyat();
-  let csv = "tarih;saat;tetik;his;plan;gun_toplam;gun_sinir;tutar\n";
+$("#btnCsv").onclick=async()=>{
+  const bf=birimFiyat();
+  let csv="tarih;saat;tetik;yer;ortam;istek;his;bahane;plan;gun_toplam;gun_sinir;tutar\n";
   D.logs.slice().sort((a,b)=>a.ts-b.ts).forEach(l=>{
-    csv += [l.gun, saatStr(l.ts), l.tetik, l.his||"", l.plan||"", sayim(l.gun), hedefAl(l.gun)??"", bf?bf.toFixed(2).replace(".",","):""].join(";")+"\n";
+    csv+=[l.gun,saatStr(l.ts),l.tetik,l.yer||"",l.sosyal||"",l.istek||"",l.his||"",l.bahane||"",l.plan||"",sayim(l.gun),hedefAl(l.gun)!=null?hedefAl(l.gun):"",bf?bf.toFixed(2).replace(".",","):""].join(";")+"\n";
   });
-  csv += "\ntarih;uyku;stres;enerji;hareket;kahve;alkol;sigara\n";
-  Object.entries(D.checkins).sort().forEach(([g,c])=>{
-    csv += [g,c.uyku,c.stres,c.enerji,c.hareket,c.kahve,c.alkol,sayim(g)].join(";")+"\n";
-  });
-  $("#aktar").value = csv;
-  $("#aktar").select();
-  try{
-    const a=document.createElement("a");
-    a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));
-    a.download="sigara-kayit.csv"; a.click();
-  }catch(e){}
+  csv+="\ntarih;uyku;stres;enerji;hareket;kahve;alkol;sigara\n";
+  Object.entries(D.checkins).sort().forEach(([g,c])=>{csv+=[g,c.uyku,c.stres,c.enerji,c.hareket,c.kahve,c.alkol,sayim(g)].join(";")+"\n";});
+  csv+="\ntarih;davranis;sonuc\n";
+  D.direnc.forEach(x=>{csv+=[x.gun,x.davranis||"",x.sonuc||""].join(";")+"\n";});
+  $("#aktar").value=csv;$("#aktar").select();
+  D.sonYedek=gun();await kaydet();ciz();
+  try{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));a.download="sigara-kayit.csv";a.click();}catch(e){}
 };
-
+/* ---------- yapay zekâ ---------- */
 function yzMetinUret(){
-  const bf = birimFiyat();
-  let t = "Sen benim yaşam koçumsun. Türkçe, kısa ve doğrudan yaz. Uzun girizgâh, motivasyon nutku ve emoji yok. Övgü sadece somut bir iş bitmişse ve tek cümle. Karakterime saldırma, utandırma; sadece davranışı eleştir. Bahaneyi bahane olarak adlandır. En fazla 8 cümle. Son cümle yarın için tek somut adım olsun ve saat içersin.\n\n";
-  t += "Aşağıda sigara takip uygulamamdan çıkan veri var.\n\n";
-
-  t += "GÜNLÜK SAYILAR (tarih | adet | sınır)\n";
+  const bf=birimFiyat();
+  let t="Sen benim yaşam koçumsun. Türkçe, kısa ve doğrudan yaz. Uzun girizgâh, motivasyon nutku ve emoji yok. Övgü sadece somut bir iş bitmişse ve tek cümle. Karakterime saldırma, utandırma; sadece davranışı eleştir. Bahaneyi bahane olarak adlandır. En fazla 8 cümle. Son cümle yarın için tek somut adım olsun ve saat içersin.\n\nAşağıda sigara takip uygulamamdan çıkan veri var.\n\n";
+  t+="GÜNLÜK SAYILAR (tarih | adet | sınır | ilk sigara saati)\n";
   for(let i=29;i>=0;i--){
-    const g=gecmisGun(i);
-    if(D.baslangic && g<D.baslangic) continue;
-    const hd=hedefAl(g);
-    t += g+" | "+sayim(g)+" | "+(hd!=null?hd:"-")+"\n";
+    const g=gecmisGun(i);if(D.baslangic&&g<D.baslangic)continue;
+    const h=hedefAl(g),ilk=ilkSigaraDk(g);
+    t+=g+" | "+sayim(g)+" | "+(h!=null?h:"-")+" | "+(ilk!=null?dkStr(ilk):"-")+"\n";
   }
-
-  const son14 = D.logs.filter(l=>l.gun>=gecmisGun(13));
-  const saatM={}, tetikM={};
-  son14.forEach(l=>{ saatM[l.saat]=(saatM[l.saat]||0)+1; tetikM[l.tetik]=(tetikM[l.tetik]||0)+1; });
-  t += "\nSON 14 GÜN SAAT DAĞILIMI\n";
-  Object.entries(saatM).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{ t += k+":00 → "+v+"\n"; });
-  t += "\nSON 14 GÜN TETİKLER\n";
-  Object.entries(tetikM).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{ t += k+" → "+v+"\n"; });
-
-  const ck = Object.entries(D.checkins).sort().slice(-14);
+  const son14=D.logs.filter(l=>l.gun>=gecmisGun(13));
+  const saatM={},tetikM={},yerM={},istekM={},bahaneM={};
+  son14.forEach(l=>{
+    saatM[l.saat]=(saatM[l.saat]||0)+1;tetikM[l.tetik]=(tetikM[l.tetik]||0)+1;
+    if(l.yer||l.sosyal){const k=[l.yer,l.sosyal].filter(Boolean).join("/");yerM[k]=(yerM[k]||0)+1;}
+    if(l.istek)istekM[l.istek]=(istekM[l.istek]||0)+1;
+    if(l.bahane&&l.bahane!=="belirtilmedi")bahaneM[l.bahane]=(bahaneM[l.bahane]||0)+1;
+  });
+  const dok=(bas,m,ek)=>{const e=Object.entries(m).sort((a,b)=>b[1]-a[1]);if(!e.length)return "";let s="\n"+bas+"\n";e.forEach(([k,v])=>{s+=k+(ek||"")+" -> "+v+"\n";});return s;};
+  t+=dok("SON 14 GÜN SAAT DAĞILIMI",saatM,":00");
+  t+=dok("SON 14 GÜN TETİKLER",tetikM);
+  t+=dok("BAĞLAM (yer/ortam)",yerM);
+  t+=dok("İSTEK PUANI DAĞILIMI (1 az, 5 çok)",istekM);
+  t+=dok("BAHANELER",bahaneM);
+  const ck=Object.entries(D.checkins).sort().slice(-14);
   if(ck.length){
-    t += "\nCHECK-IN (tarih | uyku | stres | enerji | hareket dk | kahve | alkol | sigara)\n";
-    ck.forEach(([g,c])=>{ t += [g,c.uyku,c.stres,c.enerji,c.hareket,c.kahve,c.alkol,sayim(g)].join(" | ")+"\n"; });
+    t+="\nCHECK-IN (tarih | uyku | stres | enerji | hareket dk | kahve | alkol | sigara)\n";
+    ck.forEach(([g,c])=>{t+=[g,c.uyku,c.stres,c.enerji,c.hareket,c.kahve,c.alkol,sayim(g)].join(" | ")+"\n";});
   }
-
-  const dr = D.direnc.filter(x=>x.davranis);
+  const dr=D.direnc.filter(x=>x.davranis);
   if(dr.length){
-    const m={};
-    dr.forEach(x=>{ m[x.davranis]=m[x.davranis]||{t:0,b:0}; m[x.davranis].t++; if(x.sonuc!=="dustu") m[x.davranis].b++; });
-    t += "\nYEDEK DAVRANIŞLAR (davranış | başarılı/deneme)\n";
-    Object.entries(m).forEach(([k,v])=>{ t += k+" | "+v.b+"/"+v.t+"\n"; });
+    const m={};dr.forEach(x=>{m[x.davranis]=m[x.davranis]||{t:0,b:0};m[x.davranis].t++;if(x.sonuc!=="dustu")m[x.davranis].b++;});
+    t+="\nYEDEK DAVRANIŞLAR (davranış | başarılı/deneme)\n";
+    Object.entries(m).forEach(([k,v])=>{t+=k+" | "+v.b+"/"+v.t+"\n";});
   }
-
-  const nuks = D.logs.filter(l=>l.plan && l.plan!=="—").slice(-8);
+  const nuks=D.logs.filter(l=>l.plan&&l.plan!=="—").slice(-8);
   if(nuks.length){
-    t += "\nSINIR AŞIMI NOTLARI (tarih saat | tetik | his | kendi planım)\n";
-    nuks.forEach(l=>{ t += l.gun+" "+saatStr(l.ts)+" | "+l.tetik+" | "+(l.his||"-")+" | "+l.plan+"\n"; });
+    t+="\nSINIR AŞIMI NOTLARI (tarih saat | tetik | his | bahane | kendi planım)\n";
+    nuks.forEach(l=>{t+=l.gun+" "+saatStr(l.ts)+" | "+l.tetik+" | "+(l.his||"-")+" | "+(l.bahane||"-")+" | "+l.plan+"\n";});
   }
-
-  t += "\nDURUM\n";
-  t += "Sıfır serisi: "+seriHesapla()+" gün\n";
-  if(D.plan && D.plan.sinir!=null) t += "Azalan plan: "+D.plan.gun+" tarihinde "+D.plan.sinir+" ile başladı, bugünün sınırı "+hedefAl(gun())+"\n";
-  if(D.ayar && D.ayar.birakma) t += "Bırakma tarihi: "+D.ayar.birakma+"\n";
-  if(bf) t += "Sigara başı maliyet: "+bf.toFixed(2)+" TL\n";
-
-  t += "\nBenden istediğim: ne tuttu, ne düştü, yarın tek odak. Ayrıca bu veride benim göremediğim bir örüntü varsa söyle.";
+  const d=aktifDeney();
+  t+="\nDURUM\nSıfır serisi: "+seriHesapla()+" gün\n";
+  if(D.plan&&D.plan.sinir!=null)t+="Azalan plan: "+D.plan.gun+" tarihinde "+D.plan.sinir+" ile başladı, bugünün sınırı "+hedefAl(gun())+"\n";
+  if(D.ayar.aralik)t+="Aralık hedefi: "+D.ayar.aralik+" dakika\n";
+  if(D.ayar.birakma)t+="Bırakma tarihi: "+D.ayar.birakma+"\n";
+  if(bf)t+="Sigara başı maliyet: "+bf.toFixed(2)+" TL\n";
+  if(d)t+="Bu haftanın hipotezi: "+d.hipotez+"\n";
+  t+="\nBenden istediğim: ne tuttu, ne düştü, yarın tek odak. Ayrıca bu veride benim göremediğim bir örüntü varsa söyle.";
   return t;
 }
-
-$("#btnYzRapor").onclick = ()=>{
-  $("#yzMetin").value = yzMetinUret();
-  $("#ortYz").hidden = false;
-};
-$("#yzKapat").onclick = ()=> $("#ortYz").hidden = true;
-$("#yzKopya").onclick = async ()=>{
+$("#btnYzRapor").onclick=()=>{$("#yzMetin").value=yzMetinUret();$("#ortYz").hidden=false;};
+$("#yzKapat").onclick=()=>$("#ortYz").hidden=true;
+$("#yzKopya").onclick=async()=>{
   const m=$("#yzMetin");
-  try{ await navigator.clipboard.writeText(m.value); }
-  catch(e){ m.select(); document.execCommand&&document.execCommand("copy"); }
-  $("#yzKopya").textContent="Kopyalandı"; setTimeout(()=>$("#yzKopya").textContent="Kopyala",1500);
+  try{await navigator.clipboard.writeText(m.value);}catch(e){m.select();try{document.execCommand("copy");}catch(e2){}}
+  onay("#yzKopya","Kopyalandı");
 };
-$("#yzPaylas").onclick = async ()=>{
+$("#yzPaylas").onclick=async()=>{
   const metin=$("#yzMetin").value;
-  if(navigator.share){ try{ await navigator.share({title:"Sigara raporu", text:metin}); }catch(e){} }
-  else { $("#yzMetin").select(); alert("Paylaşım desteklenmiyor. Metni seçip kopyala."); }
+  if(navigator.share){try{await navigator.share({title:"Sigara raporu",text:metin});}catch(e){}}
+  else{$("#yzMetin").select();alert("Paylaşım desteklenmiyor. Metni seçip kopyala.");}
 };
-
-$("#btnKopya").onclick = ()=>{
-  $("#aktar").value = JSON.stringify(D);
-  $("#aktar").select();
-  $("#btnKopya").textContent="Metni kopyala"; 
-};
-$("#btnYukle").onclick = async ()=>{
-  const t=$("#aktar").value.trim();
-  if(!t) return;
+$("#btnKoc").onclick=async()=>{
+  const btn=$("#btnKoc");btn.disabled=true;btn.textContent="Yorum hazırlanıyor…";
   try{
-    const y=JSON.parse(t);
-    if(!Array.isArray(y.logs)) throw 0;
-    D = Object.assign(JSON.parse(JSON.stringify(bosVeri)), y);
-    await kaydet(); ciz();
-    $("#btnYukle").textContent="İçe aktarıldı"; setTimeout(()=>$("#btnYukle").textContent="Metni içe aktar",1500);
-  }catch(e){ alert("Metin okunamadı. Tamamını yapıştırdığından emin ol."); }
+    const res=await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:yzMetinUret()}]})});
+    const data=await res.json();
+    const metin=data.content.filter(x=>x.type==="text").map(x=>x.text).join("\n").trim();
+    $("#raporKoc").innerHTML=metin.split("\n").filter(Boolean).map(l=>"<p>"+l+"</p>").join("");
+  }catch(e){
+    $("#raporKoc").innerHTML+="<p>Yorum alınamadı. Bağlantıyı kontrol et; rakamlar yukarıda duruyor, karar için yeterli.</p>";
+  }
+  btn.disabled=false;btn.textContent="Koçtan yorum iste";
 };
+if(!window.storage){$("#btnKoc").disabled=true;$("#btnKoc").textContent="Koç yorumu yalnızca Claude içinde";}
 
-if(!window.storage){
-  $("#btnKoc").disabled = true;
-  $("#btnKoc").textContent = "Koç yorumu yalnızca Claude içinde";
-}
-
-/* --- sekme --- */
+/* ---------- sekmeler ---------- */
 document.querySelectorAll("nav button").forEach(b=>{
   b.onclick=()=>{
     document.querySelectorAll("nav button").forEach(x=>x.classList.remove("aktif"));
     b.classList.add("aktif");
-    ["bugun","rapor","gunluk","ayar","rehber"].forEach(s=>$("#s-"+s).hidden = s!==b.dataset.s);
-    $("#baslik").textContent = {bugun:"Sayaç",rapor:"Rapor",gunluk:"Günlük",ayar:"Ayar",rehber:"Kullanım"}[b.dataset.s];
+    ["bugun","rapor","gunluk","ayar","rehber"].forEach(s=>$("#s-"+s).hidden=s!==b.dataset.s);
+    $("#baslik").textContent={bugun:"Sayaç",rapor:"Rapor",gunluk:"Günlük",ayar:"Ayar",rehber:"Kullanım"}[b.dataset.s];
     window.scrollTo(0,0);
   };
 });
-
 yukle();
 </script>
 </body>
