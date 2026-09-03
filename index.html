@@ -204,7 +204,7 @@ section[hidden]{display:none}
     <label for="f5">Kahve (fincan)</label><input id="f5" type="number" inputmode="numeric" min="0">
     <label for="f6">Alkol</label>
     <select id="f6"><option value="">Seç</option><option>Yok</option><option>Var</option></select>
-    <button class="gonder" id="btnGunluk">Günlüğü ver</button>
+    <button class="gonder" id="btnGunluk">Günlüğü kaydet</button>
     <div class="hata" id="gunlukHata"></div>
     <div class="koc" id="gunlukKoc" hidden></div>
   </section>
@@ -237,10 +237,10 @@ section[hidden]{display:none}
     <p class="not">Claude içindeki kayıtla Safari'deki kayıt ayrıdır. Birinden metni kopyala, diğerine yapıştır.</p>
     <textarea id="aktar" rows="4" placeholder="Veri metni"></textarea>
     <div class="eylem" style="margin-top:12px">
-      <button class="bekle" id="btnKopya">Veriyi çıkar</button>
-      <button class="bekle" id="btnYukle">Yapıştırılanı yükle</button>
+      <button class="bekle" id="btnKopya">Veriyi dışa aktar</button>
+      <button class="bekle" id="btnYukle">Metni içe aktar</button>
     </div>
-    <button class="gonder" id="btnCsv" style="background:transparent;color:var(--murekkep);border:1.5px solid var(--murekkep)">CSV olarak çıkar</button>
+    <button class="gonder" id="btnCsv" style="background:transparent;color:var(--murekkep);border:1.5px solid var(--murekkep)">CSV olarak dışa aktar</button>
     <p class="not">Veri bu cihazda saklanır. Silmek geri alınamaz.</p>
     <button class="gonder" id="btnSifirla" style="background:var(--damga)">Tüm veriyi sil</button>
   </section>
@@ -296,7 +296,7 @@ section[hidden]{display:none}
       <p>Ham veri isteyen bir araç kullanıyorsan Ayar sekmesindeki <b>CSV</b> çıktısını al.</p>
 
       <h3>Veri</h3>
-      <p>Kayıtlar cihazda tutulur, hiçbir yere gönderilmez. Claude içindeki kayıtla Safari'deki kayıt <b>ayrıdır</b>. Taşımak için Ayar → "Veriyi çıkar" ile metni al, diğer ortamda aynı alana yapıştırıp "Yapıştırılanı yükle" de. Uygulamayı ana ekrana eklemeden önce bunu yap.</p>
+      <p>Kayıtlar cihazda tutulur, hiçbir yere gönderilmez. Claude içindeki kayıtla Safari'deki kayıt <b>ayrıdır</b>. Taşımak için Ayar → "Veriyi dışa aktar" ile metni al, diğer ortamda aynı alana yapıştırıp "Metni içe aktar" de. Uygulamayı ana ekrana eklemeden önce bunu yap.</p>
 
       <h3>Sınır</h3>
       <p>Bu bir sayaç, doktor değil. Göğüs ağrısı, şiddetli yoksunluk, uzun süren uykusuzluk veya ciddi ruhsal zorlanma varsa uygulamayla değil hekimle konuş.</p>
@@ -408,7 +408,7 @@ function birimFiyat(){
 function kasaCiz(){
   const bf = birimFiyat();
   const k = $("#kasa");
-  if(!bf){ k.innerHTML = `<div class="bos">Paket fiyatı girilmemiş. Ayar sekmesinden fiyatı ve pakette kaç adet olduğunu gir — harcaman rakama dönüşmeden soyut kalır.</div>`; return; }
+  if(!bf){ k.innerHTML = `<div class="bos">Paket fiyatı girilmemiş. Ayar sekmesinden fiyatı ve pakette kaç adet olduğunu gir. Rakama dönüşmeyen harcama soyut kalır.</div>`; return; }
   const tl = n => n.toLocaleString("tr-TR",{maximumFractionDigits:0})+" TL";
   const b=gun();
   const bugun = sayim(b)*bf;
@@ -431,7 +431,7 @@ function kasaCiz(){
   h += `<div class="satir"><span class="tetik" style="flex:1">Son 30 gün</span><b>${tl(son30)}</b></div>`;
   h += `<div class="satir"><span class="tetik" style="flex:1">Bu hızla yıllık</span><b>${tl(gunlukOrt*365)}</b></div>`;
   if(taban!=null) h += `<div class="satir kasa-vurgu"><span class="tetik" style="flex:1">İçmediklerinden biriken</span><b>${tl(tasarruf)}</b></div>`;
-  h += `<div class="satir"><span class="tetik" style="flex:1">Toplam kayıt / harcanan süre</span><b>${D.logs.length} · ${Math.floor(dk/60)} sa</b></div>`;
+  h += `<div class="satir"><span class="tetik" style="flex:1">Toplam kayıt ve harcanan süre</span><b>${D.logs.length} · ${Math.floor(dk/60)} sa</b></div>`;
   k.innerHTML = h;
 }
 
@@ -614,7 +614,7 @@ function riskCiz(){
   const adet = m[simdi];
   const t = enCok(son14.filter(l=>l.saat===simdi).map(l=>l.tetik));
   u.hidden=false;
-  u.innerHTML = "Riskli saat. Son 14 günde bu saatte <b>"+adet+"</b> kayıt var"+(t?", çoğu "+t[0].toLowerCase()+" tetiğiyle":"")+". Kaydetmeden önce ertele düğmesine bas.";
+  u.innerHTML = "Riskli saat. Son 14 günde bu saatte <b>"+adet+"</b> kayıt var"+(t?"; en sık tetik "+t[0].toLowerCase():"")+". Kaydetmeden önce ertele düğmesine bas.";
 }
 
 function davranisCiz(){
@@ -646,7 +646,7 @@ function haftaKirilim(){
   const a=ort(ic), b=ort(son);
   if(Math.abs(a-b)<0.8) return "";
   return "<p>Hafta içi ortalama <b>"+a.toFixed(1)+"</b>, hafta sonu <b>"+b.toFixed(1)+"</b>. "+
-    (a>b?"Sorun iş günü. Mesai içindeki molalarına önceden bir iş koy.":"Sorun hafta sonu. Boş zamanı planla, plansız saat en pahalı saatin.")+"</p>";
+    (a>b?"Sorun hafta içinde. Mesai molalarını önceden planla, boş mola en riskli mola.":"Sorun hafta sonunda. Boş zamanı önceden planla, plansız saat en pahalı saatin.")+"</p>";
 }
 
 function hatirlatCiz(){
@@ -657,7 +657,7 @@ function hatirlatCiz(){
     const kalanGun = gunFarki(b, bd);
     if(kalanGun>0) parcalar.push("Bırakma tarihine <b>"+kalanGun+"</b> gün.");
     else if(kalanGun===0) parcalar.push("Bırakma tarihi <b>bugün</b>.");
-    else parcalar.push("Bırakma tarihinin <b>"+Math.abs(kalanGun)+"</b>. günündesin.");
+    else parcalar.push("Bırakma tarihini <b>"+Math.abs(kalanGun)+"</b> gün geçtin.");
   }
   if(simdi.getDay()===0) parcalar.push("Pazar: haftalık değerlendirme Rapor sekmesinde hazır.");
   else if(simdi.getHours()>=20 && !D.checkins[b]) parcalar.push("Bugünün check-in'i girilmedi. Günlük sekmesi, altı alan.");
@@ -668,7 +668,7 @@ function hatirlatCiz(){
 function gunlukYorum(n,hedef,dun,log){
   const p=[];
   if(hedef==null) p.push("<p>Sınır girilmemiş. Ayar sekmesinden bugünün üst sınırını yaz — sınırsız sayaç sadece kayıt tutar, ilerletmez.</p>");
-  else if(n>hedef) p.push("<p>Sınırı "+(n-hedef)+" aştın. Bu bir sapma değil, sınırın gerçekçi olmadığının ya da tetiğe hazırlıksız yakalandığının verisi.</p>");
+  else if(n>hedef) p.push("<p>Sınırı "+(n-hedef)+" adet aştın. Bu bir sapma değil, sınırın gerçekçi olmadığının ya da tetiğe hazırlıksız yakalandığının verisi.</p>");
   else if(n===0 && hedef===0) p.push("<p>Sıfır. Tek cümle: iyi iş.</p>");
   else p.push("<p>Sınırın altındasın. Kalan hak <b>"+(hedef-n)+"</b>. Bunu harcaman gerekmiyor.</p>");
 
@@ -678,7 +678,7 @@ function gunlukYorum(n,hedef,dun,log){
   }
   const t = enCok(D.logs.filter(l=>l.gun>=gecmisGun(6)).map(l=>l.tetik));
   const s = enCok(D.logs.filter(l=>l.gun>=gecmisGun(6)).map(l=>String(l.saat).padStart(2,"0")+":00"));
-  if(t) p.push('<p class="odak">Yarın tek odak: '+t[0].toLowerCase()+" anı. "+(s?s[0]:"")+" civarı için yedek davranışını şimdi seç: su, 5 dk yürüyüş veya sakız.</p>");
+  if(t) p.push('<p class="odak">Yarın tek odak: en sık tetiğin <b>'+t[0].toLowerCase()+"</b>"+(s?", saat "+s[0]+" civarı":"")+". Yedek davranışını şimdi seç: su, 5 dk yürüyüş veya sakız.</p>");
   return p.join("");
 }
 
@@ -707,9 +707,9 @@ function cizRapor(){
   const sifirGun = say.filter(x=>x===0).length;
   $("#olcu").innerHTML =
     "<span>7 gün toplam <b>"+buHafta+"</b></span>"+
-    "<span>günlük ort. <b>"+(buHafta/7).toFixed(1)+"</b></span>"+
+    "<span>günlük ortalama <b>"+(buHafta/7).toFixed(1)+"</b></span>"+
     "<span>sıfır gün <b>"+sifirGun+"</b></span>"+
-    (fark!==null?"<span>önceki hafta <b>"+(fark>0?"+":"")+fark+"%</b></span>":"");
+    (fark!==null?"<span>önceki hafta <b>"+(fark>0?"+%":"-%")+Math.abs(fark)+"</b></span>":"");
 
   const son7 = D.logs.filter(l=>l.gun>=gecmisGun(6));
   const saatM={}; son7.forEach(l=>{const k=String(l.saat).padStart(2,"0")+":00"; saatM[k]=(saatM[k]||0)+1;});
@@ -728,8 +728,8 @@ function cizRapor(){
   const bugunPazar = new Date().getDay()===0;
   let h = "";
   if(bugunPazar) h += "<p>Pazar. Haftanın kapanış rakamı: <b>"+buHafta+"</b>, ortalama <b>"+(buHafta/7).toFixed(1)+"</b>.</p>";
-  if(fark!==null && fark>0) h += "<p>Geçen haftaya göre "+fark+"% arttın. Hedefi değil sistemi değiştir: en yoğun saatini boş bırakma, o saate önceden bir iş koy.</p>";
-  else if(fark!==null && fark<0) h += "<p>Geçen haftaya göre "+Math.abs(fark)+"% düştün. Gelecek hafta ölçülebilir tek hedef: günlük ortalamayı <b>"+Math.max(0,Math.floor(buHafta/7)-1)+"</b> yap.</p>";
+  if(fark!==null && fark>0) h += "<p>Geçen haftaya göre %"+fark+" arttın. Hedefi değil sistemi değiştir: en yoğun saatini boş bırakma, o saate önceden bir iş koy.</p>";
+  else if(fark!==null && fark<0) h += "<p>Geçen haftaya göre %"+Math.abs(fark)+" düştün. Gelecek hafta ölçülebilir tek hedef: günlük ortalamayı <b>"+Math.max(0,Math.floor(buHafta/7)-1)+"</b> yap.</p>";
   else h += "<p>Karşılaştırma için en az iki haftalık kayıt gerekiyor. Şimdilik tek iş: her sigarayı anında işaretle.</p>";
   h += haftaKirilim();
   h += baglanti("stres", c=>c.stres>=7, "stresli", "sakin");
@@ -740,7 +740,7 @@ function cizRapor(){
     const sonNuks = nuks[nuks.length-1];
     h += "<p>Sınır aşımlarında en sık his: <b>"+enCok(nuks.map(x=>x.his))[0]+"</b>. Kendi yazdığın son plan: "+sonNuks.plan+". Uygula, yenisini arama.</p>";
   }
-  h += "<p>Bu hafta ertelenip vazgeçilen: <b>"+dirençTop+"</b>. Bu sayı arttıkça diğeri düşer.</p>";
+  h += "<p>Bu hafta erteleyip vazgeçtiğin istek sayısı: <b>"+dirençTop+"</b>. Bu sayı arttıkça diğeri düşer.</p>";
   $("#raporKoc").innerHTML = h;
 }
 
@@ -754,7 +754,7 @@ function baglanti(ad, kosul, etiketA, etiketB){
   const ort=a=>a.reduce((x,y)=>x+y,0)/a.length;
   const a=ort(A), b=ort(B);
   if(Math.abs(a-b)<0.8) return "";
-  return "<p>"+etiketA+" günlerinde ortalama <b>"+a.toFixed(1)+"</b>, "+etiketB+" günlerde <b>"+b.toFixed(1)+"</b>. "+
+  return "<p>"+etiketA+" günlerde ortalama <b>"+a.toFixed(1)+"</b>, "+etiketB+" günlerde <b>"+b.toFixed(1)+"</b>. "+
     (a>b?"Bu bir tesadüf değil, tetik. Bu günler için önceden plan yap.":"Bu tarafta rakam daha iyi; aynı düzeni koru.")+"</p>";
 }
 
@@ -953,7 +953,7 @@ $("#btnYukle").onclick = async ()=>{
     if(!Array.isArray(y.logs)) throw 0;
     D = Object.assign(JSON.parse(JSON.stringify(bosVeri)), y);
     await kaydet(); ciz();
-    $("#btnYukle").textContent="Yüklendi"; setTimeout(()=>$("#btnYukle").textContent="Yapıştırılanı yükle",1500);
+    $("#btnYukle").textContent="İçe aktarıldı"; setTimeout(()=>$("#btnYukle").textContent="Metni içe aktar",1500);
   }catch(e){ alert("Metin okunamadı. Tamamını yapıştırdığından emin ol."); }
 };
 
